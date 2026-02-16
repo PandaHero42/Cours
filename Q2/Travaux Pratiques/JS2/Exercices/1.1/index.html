@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Exercice 1.1</title>
+</head>
+<body>
+    <img id="imgRenard" src="images/renard.png" alt="Renard">
+    <script>
+        const img = document.getElementById("imgRenard");
+        
+
+        img.addEventListener("click", (event) => {
+        if (img.src.endsWith("images/hibou.png")) {
+            img.src = "images/renard.png";
+        } else {
+            img.src = "images/hibou.png";
+        }
+        });
+    </script>
+    
+</body>
+</html>

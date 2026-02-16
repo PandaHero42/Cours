@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 1.6</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Votre Pizza</h1>
+    <div class="container">
+        <div class="left">
+            <label for="pizza"></label>
+            <select id="pizza">
+                <option value="margarita">Margarita</option>
+                <option value="regina">Regina</option>
+                <option value="capricciosa">Capricciosa</option>
+                <option value="quattro">Quattro</option>
+                <option value="diavola">Diavola</option>
+                <option value="marinara">Marinara</option>
+            </select><br>
+
+            <label>
+                <input type="radio" name="supMode" id="withSup" value="with">
+                avec suppléments
+            </label><br>
+
+            <label>
+                <input type="radio" name="supMode" id="noSup" value="none" checked>
+                sans suppléments
+            </label>
+
+            <div id="supZone" class="hidden">
+                <label><input type="checkbox" class="sup" value="anchois"> Anchois</label><br>
+                <label><input type="checkbox" class="sup" value="frites"> Frites</label><br>
+                <label><input type="checkbox" class="sup" value="olives"> Olives</label>
+            </div>
+        </div>
+    
+    
+        <div class="right">
+            <legend>Paiement :</legend>
+            <label><input type="radio" name="pay" value="cash" checked> CASH</label><br>
+            <label><input type="radio" name="pay" value="visa"> Visa</label>
+            <p>Prix : <br><span id="price">0</span> €</p>
+
+            <button type="button">Commandez !</button>
+
+            <script src="app.js"></script>
+        </div>
+    </div>
+</body>
+</html>

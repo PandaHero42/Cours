@@ -1,0 +1,9 @@
+.hidden {
+    display: none;
+}
+
+.container {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+}
