@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercice 2.4 - Galerie</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Burger (icône via CSS background-image) -->
+  <div id="burger" aria-label="menu"></div>
+
+  <!-- Volet -->
+  <nav id="volet">
+    <a href="#">Lien 1</a>
+    <a href="#">Lien 2</a>
+    <a href="#">Lien 3</a>
+    <a href="#">Lien 4</a>
+  </nav>
+
+  <!-- Galerie -->
+  <main class="gallery">
+    <figure><img src="img/max1.jpg" alt=""><figcaption>Photo 1</figcaption></figure>
+    <figure><img src="img/max2.jpg" alt=""><figcaption>Photo 2</figcaption></figure>
+    <figure><img src="img/max3.jpg" alt=""><figcaption>Photo 3</figcaption></figure>
+    <figure><img src="img/max4.jpg" alt=""><figcaption>Photo 4</figcaption></figure>
+    <figure><img src="img/max5.jpg" alt=""><figcaption>Photo 5</figcaption></figure>
+    <figure><img src="img/max6.jpg" alt=""><figcaption>Photo 6</figcaption></figure>
+    <figure><img src="img/max7.jpg" alt=""><figcaption>Photo 7</figcaption></figure>
+    <figure><img src="img/max8.jpg" alt=""><figcaption>Photo 8</figcaption></figure>
+    <figure><img src="img/max9.jpg" alt=""><figcaption>Photo 9</figcaption></figure>
+    <figure><img src="img/max10.jpg" alt=""><figcaption>Photo 10</figcaption></figure>
+    <figure><img src="img/max11.jpg" alt=""><figcaption>Photo 11</figcaption></figure>
+    <figure><img src="img/max12.jpg" alt=""><figcaption>Photo 12</figcaption></figure>
+  </main>
+
+  <!-- Lightbox -->
+  <div id="lightbox" aria-hidden="true">
+    <img id="lightImg" alt="">
+    <div id="close" aria-label="fermer"></div>
+  </div>
+
+  <!-- jQuery local + fallback CDN (anti “$ not defined”) -->
+  <script src="jquery-3.3.1.min.js"></script>
+  <script>
+    if (!window.jQuery) {
+      const s = document.createElement('script');
+      s.src = "https://code.jquery.com/jquery-3.7.1.min.js";
+      document.head.appendChild(s);
+    }
+  </script>
+
+  <script src="app.js"></script>
+</body>
+</html>

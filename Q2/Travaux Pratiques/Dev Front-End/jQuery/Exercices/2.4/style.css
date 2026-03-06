@@ -1,0 +1,106 @@
+/* Base */
+body {
+  margin: 0;
+  font-family: Calibri, Arial, sans-serif;
+  background: linear-gradient(#6ea5d8, #d07b1d);
+}
+
+/* ===== Burger ===== */
+#burger {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: 42px;
+  height: 42px;
+  background: url("menu.svg") center/28px no-repeat;
+  background-color: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.35);
+  cursor: pointer;
+  z-index: 1200;
+}
+
+/* ===== Volet navigation ===== */
+#volet {
+  position: fixed;
+  top: 0;
+  left: -220px;             /* caché */
+  width: 200px;
+  height: 100%;
+  padding-top: 70px;
+  background: rgba(0,0,0,0.65);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: left 400ms;
+  z-index: 1100;
+}
+
+#volet a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 12px;
+  background: rgba(0,0,0,0.35);
+}
+
+#volet.open {
+  left: 0;                  /* visible */
+}
+
+/* ===== Galerie ===== */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+  padding: 70px 20px 30px 20px;  /* laisse place au burger */
+}
+
+figure {
+  width: 200px;
+  margin: 0;
+  cursor: pointer;
+  background: rgba(255,255,255,0.85);
+  padding: 8px;
+}
+
+figure img {
+  width: 100%;
+  display: block;
+}
+
+figcaption {
+  text-align: center;
+  margin-top: 6px;
+  font-size: 12px;
+}
+
+/* ===== Lightbox ===== */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;              /* cachée au départ */
+  z-index: 2000;
+}
+
+#lightbox.show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#lightImg {
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+/* Croix (en background-image CSS, comme demandé) */
+#close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 38px;
+  height: 38px;
+  background: url("cross.svg") center/26px no-repeat;
+  cursor: pointer;
+}

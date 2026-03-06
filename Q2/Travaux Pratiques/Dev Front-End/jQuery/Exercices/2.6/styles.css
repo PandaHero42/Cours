@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  font-family: Calibri, Arial, sans-serif;
+}
+
+.hero {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 40px;
+  color: white;
+
+  background-image: url("img/bg.jpg");   /* change le chemin */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 0px;       /* on bougera le Y en JS */
+}
+
+.content {
+  padding: 60px 40px;
+  min-height: 600px;
+  background: #f2f2f2;
+  border-bottom: 1px solid #ddd;
+}

@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  font-family: Calibri, Arial, sans-serif;
+}
+
+header {
+  background: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.intro {
+  padding: 40px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.bloc {
+  height: 300px;
+  margin: 60px auto;
+  width: 80%;
+  background: steelblue;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+/* transition principale */
+.apparition {
+  transition: opacity 1s;
+  opacity: 1;
+}
+
+/* état invisible */
+.invisible {
+  opacity: 0;
+  transition: opacity 0s;
+}
