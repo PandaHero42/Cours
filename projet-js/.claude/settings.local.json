@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/Filipe-LAPTOP/Documents/GitHub/Cours/Q2/travaux pratiques/dev front-end/js//**)",
+      "Read(//c/Users/Filipe-LAPTOP/Documents/GitHub/Cours/Q2/travaux pratiques/dev front-end/jQuery//**)",
+      "Bash(cp -r \"C:/Users/Filipe-LAPTOP/Documents/GitHub/Cours/projet-js/cv-creatif\" \"C:/Users/Filipe-LAPTOP/Documents/GitHub/Cours/projet-js/cv-creatif-cyan-violet\" && cp -r \"C:/Users/Filipe-LAPTOP/Documents/GitHub/Cours/projet-js/cv-creatif\" \"C:/Users/Filipe-LAPTOP/Documents/GitHub/Cours/projet-js/cv-creatif-classic\")",
+      "Bash(cp -r \"C:/Users/Filipe-LAPTOP/Documents/GitHub/Cours/projet-js/cv-creatif\" \"C:/Users/Filipe-LAPTOP/Documents/GitHub/Cours/projet-js/cv-creatif-final\")",
+      "Bash(cp -r \"C:/Users/Filipe-LAPTOP/Documents/GitHub/Cours/projet-js/cv-creatif\" \"C:/Users/Filipe-LAPTOP/Documents/GitHub/Cours/projet-js/cv-creatif-final2\")"
+    ]
+  }
+}

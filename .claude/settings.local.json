@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(BASE=\"C:/Users/Filipe-LAPTOP/Documents/GitHub/Cours/projet-js\"\nmkdir -p \"$BASE/cv-classique/assets\" \"$BASE/cv-creatif/assets\"\ncp \"$BASE/cdc/WhatsApp Image 2026-02-20 at 12.36.22.jpeg\" \"$BASE/cv-classique/assets/photo.jpeg\"\ncp \"$BASE/cdc/WhatsApp Image 2026-02-20 at 12.36.22.jpeg\" \"$BASE/cv-creatif/assets/photo.jpeg\"\necho \"OK\")",
+      "Bash(BASE=\"C:/Users/Filipe-LAPTOP/Documents/GitHub/Cours/projet-js\"\nmv \"$BASE/cv-classique/styles.css\" \"$BASE/cv-classique/style.css\"\nmv \"$BASE/cv-creatif/styles.css\" \"$BASE/cv-creatif/style.css\")"
+    ]
+  }
+}
