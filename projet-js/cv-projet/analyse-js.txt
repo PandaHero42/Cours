@@ -1,0 +1,95 @@
+ANALYSE JS / JQUERY / LIBRAIRIES — CV PROJET
+=============================================
+
+
+1. JQUERY — Librairie JavaScript
+---------------------------------
+Version : 4.0.0
+CDN : code.jquery.com
+
+Utilisation :
+- $(document).ready() — point d'entrée, exécute le code quand le DOM est chargé
+- $('.sb-section').each() — itère sur les sections sidebar
+- $('.mc-section').each() — itère sur les sections du contenu principal
+- $el.addClass('visible') — ajoute la classe CSS qui déclenche l'animation d'apparition
+- $(this).animate({ width: ... }, 900) — anime la largeur des barres de compétences
+- $('body').toggleClass('light', ...) — bascule le mode jour/nuit
+- $(this).find('i').toggleClass(...) — change l'icône du bouton dark mode
+- $('#darkModeBtn').on('click', ...) — écoute le clic sur le bouton dark mode
+- $('#printBtn').on('click', ...) — écoute le clic sur le bouton impression
+- $('.skill-fill').first().closest('.sb-section') — remonte au parent .sb-section
+
+
+2. TYPED.JS — Librairie JavaScript
+------------------------------------
+Version : 2.1.0
+CDN : cdnjs.cloudflare.com
+
+Utilisation :
+- Effet de frappe animé dans le header (#typed-output)
+- Options utilisées :
+    strings      : 4 chaînes qui défilent en boucle
+    typeSpeed    : 50ms par caractère
+    backSpeed    : 30ms par caractère en suppression
+    backDelay    : 1800ms de pause avant de supprimer
+    loop         : true (boucle infinie)
+    smartBackspace : true (ne resupprime pas les caractères communs entre deux strings)
+
+
+3. JQUERY WAYPOINTS — Plugin jQuery
+-------------------------------------
+Version : 4.0.1
+CDN : cdnjs.cloudflare.com
+
+Utilisation (3 Waypoints créés) :
+
+  a) Apparition des sections sidebar (.sb-section)
+     - Déclenché quand chaque section arrive à 92% de la hauteur de l'écran
+     - Ajoute la classe 'visible' → animation CSS translateX + opacity
+     - Si déjà visible au chargement : setTimeout avec délai progressif (i * 100ms)
+     - this.destroy() : supprime le Waypoint après déclenchement
+
+  b) Apparition des sections principales (.mc-section)
+     - Même logique que les sections sidebar
+     - Animation CSS translateY + opacity
+
+  c) Animation des barres de compétences (.skill-fill)
+     - Déclenché quand la section compétences arrive à 90% de l'écran
+     - Si déjà visible au chargement : animateSkills() appelé directement
+     - skillsDone : flag booléen pour éviter de déclencher l'animation deux fois
+
+
+4. LIGHTBOX2 — Plugin jQuery
+-----------------------------
+Version : 2.11.5
+CDN : cdnjs.cloudflare.com
+
+Utilisation :
+- Affiche la photo de profil en grand au clic
+- Configuré via attributs HTML sur le lien de l'avatar :
+    data-lightbox="profil"
+    data-title="Américo Filipe Silva da Costa"
+- Nécessite : lightbox.min.css + lightbox.min.js
+
+
+5. JAVASCRIPT VANILLA — JS natif (sans librairie)
+--------------------------------------------------
+
+  a) Détection de visibilité au chargement
+     - getBoundingClientRect().top < window.innerHeight
+     - Vérifie si un élément est déjà dans le viewport avant de créer un Waypoint
+
+  b) window.print()
+     - Déclenche l'impression native du navigateur
+
+
+6. FONT AWESOME — Librairie d'icônes CSS
+-----------------------------------------
+Version : 7.0.1
+CDN : cdnjs.cloudflare.com
+
+Utilisation :
+- Icônes décoratives dans la sidebar (contact, compétences, certifications, langues)
+- Icônes des titres de section
+- Icônes des boutons flottants (fa-sun / fa-moon, fa-print)
+- Toutes les icônes ont aria-hidden="true" (décoratives)

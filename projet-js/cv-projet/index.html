@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Projet CV Web dynamique et intéractif avec HTML, CSS et JavaScript. Présentation de mon parcours et de mes compétences.">
+        <meta name="keywords" content="HTML, CSS, JavaScript, CV, Resume, Curriculum Vitae, Informatique, Réseaux, Télécommunications, Cybersécurité, Administration Systèmes, Développement Web, Filipe Costa, Américo Filipe Silva da Costa">
+        <meta name="author" content="Américo Filipe Silva da Costa">
+        <title>CV - SILVA DA COSTA</title>
+        
+        <!-- Font Montserrat -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+        
+        <!-- Font Awesome pour les icônes -->
+        <link 
+            rel="stylesheet" 
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" 
+            integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" 
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer" />
+
+        <!-- Lightbox2 -->
+        <link 
+            rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.5/css/lightbox.min.css" 
+            integrity="sha512-xtV3HfYNbQXS/1R1jP53KbFcU9WXiSA1RFKzl5hRlJgdOJm4OxHCWYpskm6lN0xp0XtKGpAfVShpbvlFH3MDAA==" 
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer" />
+
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="cv-wrapper">
+            <!-- En-tête du CV : photo + nom + texte animé -->
+            <div class="cv-header">
+                <!-- Photo de profil avec bordure dégradée -->
+                <div class="avatar">
+                    <a href="assets/photo.jpeg" data-lightbox="profil" data-title="Américo Filipe Silva da Costa">
+                        <img src="assets/photo.jpeg" alt="Américo Filipe Silva da Costa">
+                    </a>
+                </div>
+                <!-- Textes : nom, effet de frappe avec typed, description -->
+                <div class="header-text">
+                    <h1>Américo Filipe Silva da Costa</h1>
+                    <!--Typed.js pour l'effet de frappe dans ce span -->
+                    <div class="typed-wrap" aria-hidden="true">
+                        <span id="typed-output"></span>
+                    </div>
+                    <!-- Visible seulement à l'impression -->
+                    <div class="print-subtitle">Réseaux &amp; Télécommunications ·
+                            Cybersécurité · Administration Systèmes</div>
+                    <p class="header-about">
+                        Étudiant en informatique, orientation réseaux et télécommunications, 
+                        motivé à développer des compétences solides en administration systèmes 
+                        et sécurité informatique. Curieux, persévérant et méthodique, 
+                        je souhaite évoluer vers le domaine de la cybersécurité.
+                    </p>
+                </div>
+            </div>
+
+
+            <!-- Sidebar gauche : contact, compétences techniques, certifications, langues -->
+            <aside class="sidebar">
+
+            <!-- Contact -->
+                <div class="sb-section">
+                    <h2 class="sb-title"><i class="fa-solid fa-address-card" 
+                        aria-hidden="true"></i> Contact</h2>
+                    <div class="info-item">
+                        <i class="fa-solid fa-phone" aria-hidden="true"></i>
+                        <a href="tel:+32490223596">+32 490 22 35 96</a>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                        <a href="mailto:filipe.costa.0703@gmail.com">filipe.costa.0703@gmail.com</a>
+                    </div>
+                    <div class="info-item">
+                    <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                    <span>1190 Forest, Bruxelles</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+                        <a href="https://www.linkedin.com/in/filipe-costa07/" 
+                        target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-car" aria-hidden="true"></i>
+                        <span>Permis AM, B</span>
+                    </div>
+                </div>
+
+            <!-- Compétences techniques avec barre de progression -->
+                <div class="sb-section">
+                    <h2 class="sb-title"><i class="fa-solid fa-code" 
+                        aria-hidden="true"></i> Compétences techniques</h2>
+                    <!-- data-width = pourcentage de la barre pour JS -->
+                    <div class="skill-item">
+                        <div class="skill-name">Config / Sécurisation réseau</div>
+                        <div class="skill-bar" aria-hidden="true">
+                            <div class="skill-fill" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Admin. Windows Server</div>
+                        <div class="skill-bar" aria-hidden="true">
+                            <div class="skill-fill" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Développement Web</div>
+                        <div class="skill-bar" aria-hidden="true">
+                            <div class="skill-fill" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Python</div>
+                        <div class="skill-bar" aria-hidden="true">
+                            <div class="skill-fill" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">Linux</div>
+                        <div class="skill-bar" aria-hidden="true">
+                            <div class="skill-fill" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">SQL</div>
+                        <div class="skill-bar" aria-hidden="true">
+                            <div class="skill-fill" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Git</span>
+                        <span class="tag">GitHub</span>
+                        <span class="tag">Packet Tracer</span>
+                        <span class="tag">TryHackMe</span>
+                        <span class="tag">HackTheBox</span>
+                        <span class="tag">RootMe</span>
+                    </div>
+                </div>
+
+            <!-- Certifications -->
+                <div class="sb-section">
+                    <h2 class="sb-title"><i class="fa-solid fa-certificate" 
+                        aria-hidden="true"></i> Certifications</h2>
+                    <div class="cert-item">
+                        <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                        <div>
+                            <strong>Introduction to Cybersecurity</strong><br>
+                            <span class="cert-issuer">Cisco Networking Academy · 2026</span>
+                        </div>
+                    </div>
+                    <div class="cert-item">
+                        <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                        <div>
+                            <strong>CCNA : Introduction to Networks</strong><br>
+                            <span class="cert-issuer">Cisco Networking Academy · 2025</span>
+                        </div>
+                    </div>
+                    <div class="cert-item">
+                        <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                        <div>
+                            <strong>Introduction to IoT and Digital Transformation</strong><br>
+                            <span class="cert-issuer">Cisco Networking Academy · 2024</span>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Langues -->
+                <div class="sb-section">
+                    <h2 class="sb-title"><i class="fa-solid fa-language" 
+                        aria-hidden="true"></i> Langues</h2>
+                    <div class="lang-item">
+                        <span>Portugais</span>
+                        <span class="lang-level">Langue maternelle</span>
+                    </div>
+                    <div class="lang-item">
+                        <span>Français</span>
+                        <span class="lang-level">Bilingue</span>
+                    </div>
+                    <div class="lang-item">
+                        <span>Anglais</span>
+                        <span class="lang-level">Courant</span>
+                    </div>
+                    <div class="lang-item">
+                        <span>Espagnol</span>
+                        <span class="lang-level">Courant</span>
+                    </div>
+                </div>    
+            </aside>
+
+            <!-- Contenu principal : expérience professionnelle, formations -->
+            <main class="main-content">
+
+                <div class="mc-section">
+                    <h2 class="mc-title"><i class="fa-solid fa-briefcase" 
+                        aria-hidden="true"></i> Expérience Professionnelle</h2>
+                    <div class="timeline">
+                        <div class="tl-item">
+                            <div class="tl-header">
+                                <span class="tl-title">Boucher</span>
+                                <span class="tl-date">Août 2022 - Janvier 2023</span>
+                            </div>
+                            <div class="tl-sub">Colruyt · Ath, Belgique</div>
+                            <p class="tl-desc">Découpe et préparation de la viande.
+                                Rigueur, respect strict des normes d'hygiène
+                                et travail en équipe dans un environnement dynamique.</p>
+                        </div>
+                        <div class="tl-item">
+                            <div class="tl-header">
+                                <span class="tl-title">Boucher · Charcutier · Vendeur</span>
+                                <span class="tl-date">Janvier 2020 - Août 2022</span>
+                            </div>
+                            <div class="tl-sub">Renmans · Mons, Belgique</div>
+                            <p class="tl-desc">Désossage, découpe, gestion du rayon, conseil client
+                                et production quotidienne. Adaptabilité, sens des responsabilités
+                                et travail en équipe.</p>
+                        </div>
+                        <div class="tl-item">
+                            <div class="tl-header">
+                                <span class="tl-title">Chef de Salle</span>
+                                <span class="tl-date">Mai 2019 - Septembre 2019</span>
+                            </div>
+                            <div class="tl-sub">Plage Privée Terre de Sable · Cavalaire-sur-Mer, France</div>
+                            <p class="tl-desc">Supervision et coordination de l'équipe de salle
+                                en haute saison. Management, gestion des priorités et sang-froid
+                                dans un établissement à fort volume.</p>
+                        </div>
+                        <div class="tl-item">
+                            <div class="tl-header">
+                                <span class="tl-title">Chef de Rang</span>
+                                <span class="tl-date">Mai 2018 - Octobre 2018</span>
+                            </div>
+                            <div class="tl-sub">Le Comptoir des Saveurs · Cavalaire-sur-Mer, France</div>
+                            <p class="tl-desc">Coordination du service entre la salle et la cuisine.
+                                Sens de l'organisation, travail en équipe et gestion du stress en service.
+                            </p>
+                        </div>
+                        <div class="tl-item">
+                            <div class="tl-header">
+                                <span class="tl-title">Barman</span>
+                                <span class="tl-date">Avril 2017 - Novembre 2017</span>
+                            </div>
+                            <div class="tl-sub">La Rhumerie · Cavalaire-sur-Mer, France</div>
+                            <p class="tl-desc">Service au bar en environnement animé. Multitasking,
+                                travail sous pression constant et esprit d'équipe au quotidien.</p>
+                        </div>
+                        <div class="tl-item">
+                            <div class="tl-header">
+                                <span class="tl-title">Barman</span>
+                                <span class="tl-date">Mai 2016 - Octobre 2016</span>
+                            </div>
+                            <div class="tl-sub">L'Ancre Bleue · Cavalaire-sur-Mer, France</div>
+                            <p class="tl-desc">Première expérience en bar. Acquisition des bases du service
+                            et de la relation client.</p>
+                        </div>
+                        <div class="tl-item">
+                            <div class="tl-header">
+                                <span class="tl-title">Commis Cuisine</span>
+                                <span class="tl-date">Mai 2015 - Septembre 2015</span>
+                            </div>
+                            <div class="tl-sub">SARL Le Pizzaiole · Cavalaire-sur-Mer, France</div>
+                            <p class="tl-desc">Appui en cuisine lors des services. Rigueur, rapidité d'exécution
+                                et initiation au travail en équipe sous pression.</p>
+                        </div>
+                        </div>
+                    </div>
+
+                    <!-- Formation Scolaire -->
+                    <div class="mc-section">
+                        <h2 class="mc-title">
+                            <i class="fa-solid fa-graduation-cap" 
+                            aria-hidden="true"></i> Formation scolaire</h2>
+                        <div class="timeline">
+                            <div class="tl-item">
+                                <div class="tl-header">
+                                    <span class="tl-title">Bachelier en Informatique</span>
+                                    <span class="tl-date">2024 - présent</span>
+                                </div>
+                                <div class="tl-sub">Orientation réseaux, télécommunications &amp; 
+                                    sécurité · Haute École en Hainaut · Mons, Belgique</div>
+                            </div>
+                            <div class="tl-item">
+                                <div class="tl-header">
+                                    <span class="tl-title">Formation Boucher-Désosseur-Trancheur</span>
+                                    <span class="tl-date">2020 - 2021</span>
+                                </div>
+                                <div class="tl-sub">Centre IFAPME Mons Borinage Centre · Mons, Belgique</div>
+                            </div>
+                        </div>
+                    </div> 
+            </main>
+        </div>
+        <!-- Boutons flottants (mode sombre + impression) -->
+        <div class="action-buttons">
+            <button class="btn-action" id="darkModeBtn" title="Basculer en mode clair/sombre" 
+                aria-label="Basculer entre mode clair et sombre">
+                <i class="fa-solid fa-sun" aria-hidden="true"></i>
+            </button>
+            <button class="btn-action" id="printBtn" title="Imprimer le CV" 
+                aria-label="Imprimer le CV">
+                <i class="fa-solid fa-print" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <!-- jQuery -->
+        <script 
+            src="https://code.jquery.com/jquery-4.0.0.js" 
+            integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" 
+            crossorigin="anonymous"></script>
+        <!-- Typed.js -->
+        <script 
+            src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js" 
+            integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ==" 
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer"></script>
+        <!-- jQuery Waypoints -->
+        <script 
+            src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" 
+            integrity="sha512-CEiA+78TpP9KAIPzqBvxUv8hy41jyI3f2uHi7DGp/Y/Ka973qgSdybNegWFciqh6GrN2UePx2KkflnQUbUhNIA==" 
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer"></script>
+        <!-- Lightbox2 -->
+        <script 
+            src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.5/js/lightbox.min.js" 
+            integrity="sha512-KbRFbjA5bwNan6DvPl1ODUolvTTZ/vckssnFhka5cG80JVa5zSlRPCr055xSgU/q6oMIGhZWLhcbgIC0fyw3RQ==" 
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
