@@ -1,95 +1,134 @@
-ANALYSE JS / JQUERY / LIBRAIRIES — CV PROJET
-=============================================
+ANALYSE JS / JQUERY / LIBRAIRIES / PLUGINS - PROJET FRONT-END CV
+--------------------------------------------
 
-
-1. JQUERY — Librairie JavaScript
+1. JQUERY
 ---------------------------------
+
 Version : 4.0.0
 CDN : code.jquery.com
 
 Utilisation :
-- $(document).ready() — point d'entrée, exécute le code quand le DOM est chargé
-- $('.sb-section').each() — itère sur les sections sidebar
-- $('.mc-section').each() — itère sur les sections du contenu principal
-- $el.addClass('visible') — ajoute la classe CSS qui déclenche l'animation d'apparition
-- $(this).animate({ width: ... }, 900) — anime la largeur des barres de compétences
-- $('body').toggleClass('light', ...) — bascule le mode jour/nuit
-- $(this).find('i').toggleClass(...) — change l'icône du bouton dark mode
-- $('#darkModeBtn').on('click', ...) — écoute le clic sur le bouton dark mode
-- $('#printBtn').on('click', ...) — écoute le clic sur le bouton impression
-- $('.skill-fill').first().closest('.sb-section') — remonte au parent .sb-section
+- $(document).ready() - point d'entrée, exécute le code quand le DOM est chargé
+- $('.skill-fill').each() + .animate() - anime la largeur des barres de compétences
+- $('body').toggleClass('light') - bascule le mode jour/nuit
+- $(this).find('i').toggleClass() - change l'icône du bouton dark mode
+- $('#darkModeBtn').on('click') - écoute le clic sur le bouton dark mode
+- $('#printBtn').on('click') - écoute le clic sur le bouton impression
 
 
-2. TYPED.JS — Librairie JavaScript
+2. TYPED.JS - Librairie JavaScript
 ------------------------------------
+
 Version : 2.1.0
 CDN : cdnjs.cloudflare.com
 
 Utilisation :
 - Effet de frappe animé dans le header (#typed-output)
 - Options utilisées :
-    strings      : 4 chaînes qui défilent en boucle
-    typeSpeed    : 50ms par caractère
-    backSpeed    : 30ms par caractère en suppression
-    backDelay    : 1800ms de pause avant de supprimer
-    loop         : true (boucle infinie)
-    smartBackspace : true (ne resupprime pas les caractères communs entre deux strings)
+    strings : 4 chaînes qui défilent en boucle
+    typeSpeed : 50ms par caractère
+    backSpeed : 30ms par caractère en suppression
+    backDelay : 1800ms de pause avant de supprimer
+    loop : true (boucle infinie)
+    smartBackspace : true (ne resupprime pas les caractères communs)
 
 
-3. JQUERY WAYPOINTS — Plugin jQuery
--------------------------------------
-Version : 4.0.1
+3. INTERSECTION OBSERVER — API JavaScript native
+-------------------------------------------------
+
+Utilisation (2 observers) :
+
+  a/ Scroll reveal des sections (.sb-section et .mc-section)
+     - Déclenché quand chaque section atteint 10% de visibilité dans le viewport
+     - Ajoute la classe 'visible' -> animation CSS opacity + translateX/Y
+     - unobserve() après déclenchement : chaque section n'anime qu'une fois
+
+  b/ Animation des barres de compétences (.skill-fill)
+     - Déclenché quand la section compétences atteint 30% de visibilité
+     - Lance jQuery .animate() sur la largeur de chaque barre
+     - disconnect() après déclenchement : ne se relance pas
+
+
+4. PARTICLES.JS - Librairie JavaScript
+----------------------------------------
+
+Version : 2.0.0
 CDN : cdnjs.cloudflare.com
 
-Utilisation (3 Waypoints créés) :
+Utilisation :
+- Fond animé dans le header (.cv-header)
+- Deux configurations selon le mode d'affichage :
 
-  a) Apparition des sections sidebar (.sb-section)
-     - Déclenché quand chaque section arrive à 92% de la hauteur de l'écran
-     - Ajoute la classe 'visible' → animation CSS translateX + opacity
-     - Si déjà visible au chargement : setTimeout avec délai progressif (i * 100ms)
-     - this.destroy() : supprime le Waypoint après déclenchement
+  Mode nuit :
+    - Hexagones (polygon, 6 côtés) cyan et violet
+    - Lignes de connexion entre particules proches
+    - Rebond sur les bords du header (out_mode: bounce)
+    - Effet grab au survol : lignes vers la souris
 
-  b) Apparition des sections principales (.mc-section)
-     - Même logique que les sections sidebar
-     - Animation CSS translateY + opacity
+  Mode jour :
+    - Triangles aux tons bruns/ocre
+    - Sans lignes, direction ascendante
+    - Effet repulse au survol : particules fuient la souris
 
-  c) Animation des barres de compétences (.skill-fill)
-     - Déclenché quand la section compétences arrive à 90% de l'écran
-     - Si déjà visible au chargement : animateSkills() appelé directement
-     - skillsDone : flag booléen pour éviter de déclencher l'animation deux fois
+- Destroy + réinitialisation au toggle dark/light mode
+- Relance automatique au redimensionnement de la fenêtre
 
 
-4. LIGHTBOX2 — Plugin jQuery
+5. SWIPER.JS - Librairie JavaScript
+----------------------------------
+
+Version : 11.0.5
+CDN : cdnjs.cloudflare.com
+
+Utilisation :
+- Carousel automatique des badges de certifications (.cert-swiper)
+- Options :
+    loop : true (boucle infinie)
+    autoplay : défilement automatique toutes les 3 secondes
+    pagination : points cliquables sous le carousel
+    speed : transition de 600ms
+- Caché sur mobile (remplacé par liste statique via CSS à cause d'un problème de flicker que j'arrivais pas à résoudre)
+
+
+6. LIGHTBOX2 - Plugin jQuery
 -----------------------------
+
 Version : 2.11.5
 CDN : cdnjs.cloudflare.com
 
 Utilisation :
-- Affiche la photo de profil en grand au clic
-- Configuré via attributs HTML sur le lien de l'avatar :
-    data-lightbox="profil"
-    data-title="Américo Filipe Silva da Costa"
-- Nécessite : lightbox.min.css + lightbox.min.js
+- Photo de profil : affichage en grand au clic (data-lightbox="profil")
+- Badges de certifications : galerie navigable au clic (data-lightbox="certifications")
+   - les 3 badges partagent le même groupe, navigation avec les flèches
+- Titre affiché sous chaque image (data-title)
 
 
-5. JAVASCRIPT VANILLA — JS natif (sans librairie)
+7. JAVASCRIPT - JS natif 
 --------------------------------------------------
 
-  a) Détection de visibilité au chargement
-     - getBoundingClientRect().top < window.innerHeight
-     - Vérifie si un élément est déjà dans le viewport avant de créer un Waypoint
+  a/ Dark/Light mode
+     - Toggle de la classe "light" sur body
+     - Changement de l'icône soleil/lune
+     - Réinitialisation des particules avec la config adaptée au mode
 
-  b) window.print()
-     - Déclenche l'impression native du navigateur
+  b/ Bouton impression
+     - window.print() déclenche l'impression native du navigateur
+
+  c/ Resize handler (debounce 200ms)
+     - Relance particles.js si elles ne sont plus actives après redimensionnement
+
+  d/ Gestion du cycle de vie de particles.js
+     - destroypJS() + réinitialisation au changement de mode
 
 
-6. FONT AWESOME — Librairie d'icônes CSS
+8. FONT AWESOME - Librairie d'icônes CSS
 -----------------------------------------
+
 Version : 7.0.1
 CDN : cdnjs.cloudflare.com
 
 Utilisation :
 - Icônes décoratives dans la sidebar (contact, compétences, certifications, langues)
 - Icônes des titres de section
-- Icônes des boutons flottants (fa-sun / fa-moon, fa-print)
-- Toutes les icônes ont aria-hidden="true" (décoratives)
+- Icônes des boutons flottants (fa-sun/fa-moon, fa-print)
+- Toutes les icônes ont aria-hidden="true" (décoratives, non lues par lecteurs d'écran)

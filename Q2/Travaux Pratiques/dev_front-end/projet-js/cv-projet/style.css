@@ -45,8 +45,9 @@ body::before {
     background-image:
         linear-gradient(rgba(6,182,212,0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(6,182,212,0.03) 1px, transparent 1px);
-        pointer-events: none;
-        z-index: 0;
+    pointer-events: none;
+    z-index: 0;
+    will-change: transform;
 }
 
 /* Layout grid 2 colonnes */
@@ -534,6 +535,88 @@ body.light .btn-action:hover {
     display: none;
 }
 
+/* Particles.js */
+
+#particles-js {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    will-change: transform;
+}
+
+.cv-header > *:not(#particles-js) {
+    position: relative;
+    z-index: 1;
+}
+
+/* Swiper — certifications */
+
+.cert-swiper {
+    width: 100%;
+    padding-bottom: 1.8rem !important;
+}
+
+.cert-slide {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.4rem;
+    padding: 0.8rem 0.5rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.875rem;
+    color: var(--text);
+}
+
+.cert-badge {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 0.3rem;
+    transition: transform 0.2s;
+}
+
+.cert-badge:hover {
+    transform: scale(1.08);
+}
+
+
+.cert-slide strong {
+    line-height: 1.3;
+}
+
+.cert-swiper .swiper-pagination-bullet {
+    background: var(--cyan);
+    opacity: 0.4;
+}
+
+.cert-swiper .swiper-pagination-bullet-active {
+    opacity: 1;
+}
+
+/* Lightbox2 — suppression des bords blancs */
+
+.lb-outerContainer {
+    background: transparent !important;
+    border-radius: 8px;
+}
+
+.lb-container {
+    padding: 0 !important;
+}
+
+.lb-image {
+    border: none !important;
+    border-radius: 8px;
+}
+
+/* Certifications version print — cachée à l'écran */
+
+.cert-print {
+    display: none;
+}
+
 /* Impression et responsive */
 
 @media print {
@@ -710,8 +793,21 @@ body.light .btn-action:hover {
         margin-bottom: 1rem; 
     }
 
-    .action-buttons { 
-        display: none; 
+    .action-buttons {
+        display: none;
+    }
+
+    #particles-js {
+        display: none;
+    }
+
+    /* Swiper caché à l'impression, liste statique affichée */
+    .cert-swiper {
+        display: none !important;
+    }
+
+    .cert-print {
+        display: block !important;
     }
 
     .sb-section, .mc-section { 
@@ -764,17 +860,26 @@ body.light .btn-action:hover {
         margin: 0;
     }
 
+    /* Grille de fond désactivée sur mobile — position:fixed cause des repaints au scroll */
+    body::before {
+        display: none;
+    }
+
     .cv-header {
-        position: static;
-        border-radius: 0;
-        border-left: none;
-        border-right: none;
-        border-top: none;
-        margin: 0;
+        grid-area: header;
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        border-radius: 16px;
+        margin: 0.75rem;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
         text-align: center;
         gap: 1rem;
     }
+
 
     .header-text {
         padding-left: 0;
@@ -790,6 +895,35 @@ body.light .btn-action:hover {
 
     .sidebar {
         padding-top: 2rem;
+    }
+
+    /* Sur mobile : fade simple sans transform */
+    .sb-section, .mc-section {
+        transform: none !important;
+        transition: opacity 0.35s ease;
+    }
+
+
+    /* Sur mobile : swiper caché, liste statique affichée */
+    .cert-swiper {
+        display: none;
+    }
+
+    .cert-print {
+        display: block;
+    }
+
+    /* Suppression des box-shadows coûteuses sur mobile */
+    .cv-wrapper {
+        box-shadow: none;
+    }
+
+    .cv-header {
+        box-shadow: none;
+    }
+
+    .btn-action {
+        box-shadow: none;
     }
 
     .main-content {
