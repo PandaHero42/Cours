@@ -1,4 +1,4 @@
-// ===== SWIPER — autoplay désactivé sur mobile pour éviter le flickering =====
+// 1. SWIPER - autoplay désactivé sur mobile
 var certSwiper = new Swiper('.cert-swiper', {
     loop: true,
     autoplay: { delay: 3000, disableOnInteraction: false },
@@ -11,7 +11,7 @@ var certSwiper = new Swiper('.cert-swiper', {
 
 $(document).ready(function () {
 
-    // ===== 1. TYPED.JS — effet de frappe =====
+    // 2. TYPED.JS - effet de frappe 
     new Typed('#typed-output', {
         strings: [
             'Étudiant en informatique',
@@ -26,8 +26,8 @@ $(document).ready(function () {
         smartBackspace: true
     });
 
-    // ===== 2. INTERSECTION OBSERVER — scroll reveal sections =====
-    // Sur mobile le CSS gère déjà opacity:1, donc ajouter 'visible' est sans effet
+    //  3. INTERSECTION OBSERVER - scroll pour reveal les sections 
+
     var revealObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
             if (entry.isIntersecting) {
@@ -41,7 +41,7 @@ $(document).ready(function () {
         revealObserver.observe(el);
     });
 
-    // ===== 3. INTERSECTION OBSERVER — animation barres de compétences =====
+    //  4. INTERSECTION OBSERVER - animation barres de compétences 
     var skillsDone = false;
     var skillObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
@@ -58,7 +58,7 @@ $(document).ready(function () {
     var skillSection = document.querySelector('.skill-fill');
     if (skillSection) skillObserver.observe(skillSection.closest('.sb-section'));
 
-    // ===== 4. PARTICLES.JS — fond animé dans le header =====
+    //  5. PARTICLES.JS - fond animé dans le header 
     var nightParticles = {
         particles: {
             number: { value: 70, density: { enable: true, value_area: 800 } },
@@ -117,12 +117,12 @@ $(document).ready(function () {
         }, 50);
     }
 
-    // ===== 6. DARK / LIGHT MODE =====
+    //  6. DARK / LIGHT MODE 
     var isDark = true;
 
     setTimeout(function () { initParticles(true); }, 100);
 
-    // ===== 5b. RESIZE — relancer particles si nécessaire =====
+    //  7. RESIZE - relancer particles si nécessaire 
     var resizeTimer;
     window.addEventListener('resize', function () {
         clearTimeout(resizeTimer);
@@ -141,7 +141,7 @@ $(document).ready(function () {
         initParticles(isDark);
     });
 
-    // ===== 8. BOUTON IMPRESSION =====
+    //  8. BOUTON IMPRESSION 
     $('#printBtn').on('click', function () {
         window.print();
     });

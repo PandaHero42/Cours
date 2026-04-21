@@ -33,7 +33,7 @@ Utilisation :
     smartBackspace : true (ne resupprime pas les caractères communs)
 
 
-3. INTERSECTION OBSERVER — API JavaScript native
+3. INTERSECTION OBSERVER - API JavaScript native
 -------------------------------------------------
 
 Utilisation (2 observers) :

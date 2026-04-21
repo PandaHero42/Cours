@@ -67,7 +67,10 @@ body::before {
 /* En-tête du CV horizontal */
 
 .cv-header {
-    background: linear-gradient(135deg, rgba(139,92,245,0.18) 0%, var(--header-mid-gradient) 70%, rgba(6,182,212,0.15) 100%);
+    background: linear-gradient(135deg,
+    rgba(139,92,245,0.18) 0%, 
+    var(--header-mid-gradient) 70%, 
+    rgba(6,182,212,0.15) 100%);
     border: 1px solid var(--borders);
     border-radius: 16px;
     padding: 2rem 2.5rem;
@@ -79,7 +82,8 @@ body::before {
     left: 1.5rem;
     right: 1.5rem;
     z-index: 10;
-    box-shadow: 0 12px 48px rgba(0,0,0,0.55), 0 0 0 1px rgba(139,92,246,0.12);
+    box-shadow: 0 12px 48px rgba(0,0,0,0.55), 
+    0 0 0 1px rgba(139,92,246,0.12);
     overflow: hidden;
 }
 
@@ -89,7 +93,11 @@ body::before {
     width: 180px; height: 180px;
     border-radius: 50%;
     border: 3px solid transparent;
-    background-image: linear-gradient(var(--tags-surface), var(--tags-surface)), linear-gradient(135deg, var(--cyan), var(--purple));
+    background-image: linear-gradient(var(--tags-surface), 
+    var(--tags-surface)), 
+    linear-gradient(135deg, 
+    var(--cyan), 
+    var(--purple));
     background-origin: border-box;
     background-clip: padding-box, border-box;
     flex-shrink: 0;
@@ -371,7 +379,10 @@ body::before {
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(180deg, var(--cyan), var(--purple), transparent);
+    background: linear-gradient(180deg, 
+    var(--cyan), 
+    var(--purple), 
+    transparent);
 }
 
 .tl-item {
@@ -492,7 +503,10 @@ body.light .avatar {
 }
 
 body.light .cv-header {
-    background: linear-gradient(120deg, var(--gradient-start) 0%, var(--gradient-end) 45%, var(--mc-surface) 100%);
+    background: linear-gradient(120deg, 
+    var(--gradient-start) 0%, 
+    var(--gradient-end) 45%, 
+    var(--mc-surface) 100%);
     border-color: var(--borders);
 }
 
@@ -657,7 +671,8 @@ body.light .btn-action:hover {
         left: 1.5rem;
         right: 1.5rem;
         z-index: 10;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 2px 10px rgba(6,182,212,0.12);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.6), 
+        0 2px 10px rgba(6,182,212,0.12);
         print-color-adjust: exact;
     }
 
@@ -775,7 +790,10 @@ body.light .btn-action:hover {
     }
 
     .main-content .timeline::before {
-        background: linear-gradient(180deg, var(--cyan), var(--purple), transparent);
+        background: linear-gradient(180deg, 
+        var(--cyan), 
+        var(--purple), 
+        transparent);
         print-color-adjust: exact; 
         
     }
@@ -821,7 +839,8 @@ body.light .btn-action:hover {
     }
 
     .skill-fill {
-        background: linear-gradient(90deg, var(--cyan), var(--purple)) !important;
+        background: linear-gradient(90deg, 
+        var(--cyan), var(--purple)) !important;
         print-color-adjust: exact; 
     }
 
@@ -832,7 +851,10 @@ body.light .btn-action:hover {
     /* Mode jour */
 
     body.light .cv-header {
-        background: linear-gradient(120deg, var(--gradient-start) 0%, var(--gradient-end) 45%, var(--mc-surface) 100%);
+        background: linear-gradient(120deg, 
+        var(--gradient-start) 0%, 
+        var(--gradient-end) 45%, 
+        var(--mc-surface) 100%);
         border-color: var(--borders);
         box-shadow: 0 8px 32px rgba(0,0,0,.15), 0 2px 8px rgba(125,90,68,.1);
         print-color-adjust: exact;
@@ -860,7 +882,7 @@ body.light .btn-action:hover {
         margin: 0;
     }
 
-    /* Grille de fond désactivée sur mobile — position:fixed cause des repaints au scroll */
+    /* Grille de fond désactivée sur mobile */
     body::before {
         display: none;
     }
