@@ -45,8 +45,9 @@ body::before {
     background-image:
         linear-gradient(rgba(6,182,212,0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(6,182,212,0.03) 1px, transparent 1px);
-        pointer-events: none;
-        z-index: 0;
+    pointer-events: none;
+    z-index: 0;
+    will-change: transform;
 }
 
 /* Layout grid 2 colonnes */
@@ -66,7 +67,10 @@ body::before {
 /* En-tête du CV horizontal */
 
 .cv-header {
-    background: linear-gradient(135deg, rgba(139,92,245,0.18) 0%, var(--header-mid-gradient) 70%, rgba(6,182,212,0.15) 100%);
+    background: linear-gradient(135deg,
+    rgba(139,92,245,0.18) 0%, 
+    var(--header-mid-gradient) 70%, 
+    rgba(6,182,212,0.15) 100%);
     border: 1px solid var(--borders);
     border-radius: 16px;
     padding: 2rem 2.5rem;
@@ -78,7 +82,8 @@ body::before {
     left: 1.5rem;
     right: 1.5rem;
     z-index: 10;
-    box-shadow: 0 12px 48px rgba(0,0,0,0.55), 0 0 0 1px rgba(139,92,246,0.12);
+    box-shadow: 0 12px 48px rgba(0,0,0,0.55), 
+    0 0 0 1px rgba(139,92,246,0.12);
     overflow: hidden;
 }
 
@@ -88,7 +93,11 @@ body::before {
     width: 180px; height: 180px;
     border-radius: 50%;
     border: 3px solid transparent;
-    background-image: linear-gradient(var(--tags-surface), var(--tags-surface)), linear-gradient(135deg, var(--cyan), var(--purple));
+    background-image: linear-gradient(var(--tags-surface), 
+    var(--tags-surface)), 
+    linear-gradient(135deg, 
+    var(--cyan), 
+    var(--purple));
     background-origin: border-box;
     background-clip: padding-box, border-box;
     flex-shrink: 0;
@@ -370,7 +379,10 @@ body::before {
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(180deg, var(--cyan), var(--purple), transparent);
+    background: linear-gradient(180deg, 
+    var(--cyan), 
+    var(--purple), 
+    transparent);
 }
 
 .tl-item {
@@ -491,7 +503,10 @@ body.light .avatar {
 }
 
 body.light .cv-header {
-    background: linear-gradient(120deg, var(--gradient-start) 0%, var(--gradient-end) 45%, var(--mc-surface) 100%);
+    background: linear-gradient(120deg, 
+    var(--gradient-start) 0%, 
+    var(--gradient-end) 45%, 
+    var(--mc-surface) 100%);
     border-color: var(--borders);
 }
 
@@ -531,6 +546,88 @@ body.light .btn-action:hover {
 }
 
 .print-subtitle {
+    display: none;
+}
+
+/* Particles.js */
+
+#particles-js {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    will-change: transform;
+}
+
+.cv-header > *:not(#particles-js) {
+    position: relative;
+    z-index: 1;
+}
+
+/* Swiper — certifications */
+
+.cert-swiper {
+    width: 100%;
+    padding-bottom: 1.8rem !important;
+}
+
+.cert-slide {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.4rem;
+    padding: 0.8rem 0.5rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.875rem;
+    color: var(--text);
+}
+
+.cert-badge {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 0.3rem;
+    transition: transform 0.2s;
+}
+
+.cert-badge:hover {
+    transform: scale(1.08);
+}
+
+
+.cert-slide strong {
+    line-height: 1.3;
+}
+
+.cert-swiper .swiper-pagination-bullet {
+    background: var(--cyan);
+    opacity: 0.4;
+}
+
+.cert-swiper .swiper-pagination-bullet-active {
+    opacity: 1;
+}
+
+/* Lightbox2 — suppression des bords blancs */
+
+.lb-outerContainer {
+    background: transparent !important;
+    border-radius: 8px;
+}
+
+.lb-container {
+    padding: 0 !important;
+}
+
+.lb-image {
+    border: none !important;
+    border-radius: 8px;
+}
+
+/* Certifications version print — cachée à l'écran */
+
+.cert-print {
     display: none;
 }
 
@@ -574,7 +671,8 @@ body.light .btn-action:hover {
         left: 1.5rem;
         right: 1.5rem;
         z-index: 10;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.6), 0 2px 10px rgba(6,182,212,0.12);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.6), 
+        0 2px 10px rgba(6,182,212,0.12);
         print-color-adjust: exact;
     }
 
@@ -692,7 +790,10 @@ body.light .btn-action:hover {
     }
 
     .main-content .timeline::before {
-        background: linear-gradient(180deg, var(--cyan), var(--purple), transparent);
+        background: linear-gradient(180deg, 
+        var(--cyan), 
+        var(--purple), 
+        transparent);
         print-color-adjust: exact; 
         
     }
@@ -710,8 +811,21 @@ body.light .btn-action:hover {
         margin-bottom: 1rem; 
     }
 
-    .action-buttons { 
-        display: none; 
+    .action-buttons {
+        display: none;
+    }
+
+    #particles-js {
+        display: none;
+    }
+
+    /* Swiper caché à l'impression, liste statique affichée */
+    .cert-swiper {
+        display: none !important;
+    }
+
+    .cert-print {
+        display: block !important;
     }
 
     .sb-section, .mc-section { 
@@ -725,7 +839,8 @@ body.light .btn-action:hover {
     }
 
     .skill-fill {
-        background: linear-gradient(90deg, var(--cyan), var(--purple)) !important;
+        background: linear-gradient(90deg, 
+        var(--cyan), var(--purple)) !important;
         print-color-adjust: exact; 
     }
 
@@ -736,7 +851,10 @@ body.light .btn-action:hover {
     /* Mode jour */
 
     body.light .cv-header {
-        background: linear-gradient(120deg, var(--gradient-start) 0%, var(--gradient-end) 45%, var(--mc-surface) 100%);
+        background: linear-gradient(120deg, 
+        var(--gradient-start) 0%, 
+        var(--gradient-end) 45%, 
+        var(--mc-surface) 100%);
         border-color: var(--borders);
         box-shadow: 0 8px 32px rgba(0,0,0,.15), 0 2px 8px rgba(125,90,68,.1);
         print-color-adjust: exact;
@@ -764,17 +882,26 @@ body.light .btn-action:hover {
         margin: 0;
     }
 
+    /* Grille de fond désactivée sur mobile */
+    body::before {
+        display: none;
+    }
+
     .cv-header {
-        position: static;
-        border-radius: 0;
-        border-left: none;
-        border-right: none;
-        border-top: none;
-        margin: 0;
+        grid-area: header;
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        border-radius: 16px;
+        margin: 0.75rem;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
         text-align: center;
         gap: 1rem;
     }
+
 
     .header-text {
         padding-left: 0;
@@ -790,6 +917,35 @@ body.light .btn-action:hover {
 
     .sidebar {
         padding-top: 2rem;
+    }
+
+    /* Sur mobile : fade simple sans transform */
+    .sb-section, .mc-section {
+        transform: none !important;
+        transition: opacity 0.35s ease;
+    }
+
+
+    /* Sur mobile : swiper caché, liste statique affichée */
+    .cert-swiper {
+        display: none;
+    }
+
+    .cert-print {
+        display: block;
+    }
+
+    /* Suppression des box-shadows coûteuses sur mobile */
+    .cv-wrapper {
+        box-shadow: none;
+    }
+
+    .cv-header {
+        box-shadow: none;
+    }
+
+    .btn-action {
+        box-shadow: none;
     }
 
     .main-content {

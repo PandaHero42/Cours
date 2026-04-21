@@ -1,0 +1,134 @@
+ANALYSE JS / JQUERY / LIBRAIRIES / PLUGINS - PROJET FRONT-END CV
+--------------------------------------------
+
+1. JQUERY
+---------------------------------
+
+Version : 4.0.0
+CDN : code.jquery.com
+
+Utilisation :
+- $(document).ready() - point d'entrée, exécute le code quand le DOM est chargé
+- $('.skill-fill').each() + .animate() - anime la largeur des barres de compétences
+- $('body').toggleClass('light') - bascule le mode jour/nuit
+- $(this).find('i').toggleClass() - change l'icône du bouton dark mode
+- $('#darkModeBtn').on('click') - écoute le clic sur le bouton dark mode
+- $('#printBtn').on('click') - écoute le clic sur le bouton impression
+
+
+2. TYPED.JS - Librairie JavaScript
+------------------------------------
+
+Version : 2.1.0
+CDN : cdnjs.cloudflare.com
+
+Utilisation :
+- Effet de frappe animé dans le header (#typed-output)
+- Options utilisées :
+    strings : 4 chaînes qui défilent en boucle
+    typeSpeed : 50ms par caractère
+    backSpeed : 30ms par caractère en suppression
+    backDelay : 1800ms de pause avant de supprimer
+    loop : true (boucle infinie)
+    smartBackspace : true (ne resupprime pas les caractères communs)
+
+
+3. INTERSECTION OBSERVER - API JavaScript native
+-------------------------------------------------
+
+Utilisation (2 observers) :
+
+  a/ Scroll reveal des sections (.sb-section et .mc-section)
+     - Déclenché quand chaque section atteint 10% de visibilité dans le viewport
+     - Ajoute la classe 'visible' -> animation CSS opacity + translateX/Y
+     - unobserve() après déclenchement : chaque section n'anime qu'une fois
+
+  b/ Animation des barres de compétences (.skill-fill)
+     - Déclenché quand la section compétences atteint 30% de visibilité
+     - Lance jQuery .animate() sur la largeur de chaque barre
+     - disconnect() après déclenchement : ne se relance pas
+
+
+4. PARTICLES.JS - Librairie JavaScript
+----------------------------------------
+
+Version : 2.0.0
+CDN : cdnjs.cloudflare.com
+
+Utilisation :
+- Fond animé dans le header (.cv-header)
+- Deux configurations selon le mode d'affichage :
+
+  Mode nuit :
+    - Hexagones (polygon, 6 côtés) cyan et violet
+    - Lignes de connexion entre particules proches
+    - Rebond sur les bords du header (out_mode: bounce)
+    - Effet grab au survol : lignes vers la souris
+
+  Mode jour :
+    - Triangles aux tons bruns/ocre
+    - Sans lignes, direction ascendante
+    - Effet repulse au survol : particules fuient la souris
+
+- Destroy + réinitialisation au toggle dark/light mode
+- Relance automatique au redimensionnement de la fenêtre
+
+
+5. SWIPER.JS - Librairie JavaScript
+----------------------------------
+
+Version : 11.0.5
+CDN : cdnjs.cloudflare.com
+
+Utilisation :
+- Carousel automatique des badges de certifications (.cert-swiper)
+- Options :
+    loop : true (boucle infinie)
+    autoplay : défilement automatique toutes les 3 secondes
+    pagination : points cliquables sous le carousel
+    speed : transition de 600ms
+- Caché sur mobile (remplacé par liste statique via CSS à cause d'un problème de flicker que j'arrivais pas à résoudre)
+
+
+6. LIGHTBOX2 - Plugin jQuery
+-----------------------------
+
+Version : 2.11.5
+CDN : cdnjs.cloudflare.com
+
+Utilisation :
+- Photo de profil : affichage en grand au clic (data-lightbox="profil")
+- Badges de certifications : galerie navigable au clic (data-lightbox="certifications")
+   - les 3 badges partagent le même groupe, navigation avec les flèches
+- Titre affiché sous chaque image (data-title)
+
+
+7. JAVASCRIPT - JS natif 
+--------------------------------------------------
+
+  a/ Dark/Light mode
+     - Toggle de la classe "light" sur body
+     - Changement de l'icône soleil/lune
+     - Réinitialisation des particules avec la config adaptée au mode
+
+  b/ Bouton impression
+     - window.print() déclenche l'impression native du navigateur
+
+  c/ Resize handler (debounce 200ms)
+     - Relance particles.js si elles ne sont plus actives après redimensionnement
+
+  d/ Gestion du cycle de vie de particles.js
+     - destroypJS() + réinitialisation au changement de mode
+
+
+8. FONT AWESOME - Librairie d'icônes CSS
+-----------------------------------------
+
+Version : 7.0.1
+CDN : cdnjs.cloudflare.com
+
+Utilisation :
+- Icônes décoratives dans la sidebar (contact, compétences, certifications, langues)
+- Icônes des titres de section
+- Icônes des boutons flottants (fa-sun/fa-moon, fa-print)
+- Toutes les icônes ont aria-hidden="true" (décoratives, non lues par lecteurs d'écran)

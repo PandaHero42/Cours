@@ -14,19 +14,25 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
         
         <!-- Font Awesome pour les icônes -->
-        <link 
-            rel="stylesheet" 
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" 
-            integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" 
-            crossorigin="anonymous" 
-            referrerpolicy="no-referrer" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+            integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer">
 
         <!-- Lightbox2 -->
+        <link
+            rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.5/css/lightbox.min.css"
+            integrity="sha512-xtV3HfYNbQXS/1R1jP53KbFcU9WXiSA1RFKzl5hRlJgdOJm4OxHCWYpskm6lN0xp0XtKGpAfVShpbvlFH3MDAA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer">
+        <!-- Swiper.js -->
         <link 
-            rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.5/css/lightbox.min.css" 
-            integrity="sha512-xtV3HfYNbQXS/1R1jP53KbFcU9WXiSA1RFKzl5hRlJgdOJm4OxHCWYpskm6lN0xp0XtKGpAfVShpbvlFH3MDAA==" 
-            crossorigin="anonymous" 
-            referrerpolicy="no-referrer" />
+        rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css" 
+        integrity="sha512-rd0qOHVMOcez6pLWPVFIv7EfSdGKLt+eafXh4RO/12Fgr41hDQxfGvoi1Vy55QIVcQEujUE1LQrATCLl2Fs+ag==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer" >
 
         <link rel="stylesheet" href="style.css">
     </head>
@@ -34,6 +40,8 @@
         <div class="cv-wrapper">
             <!-- En-tête du CV : photo + nom + texte animé -->
             <div class="cv-header">
+                <!-- Particles.js -->
+                <div id="particles-js"></div>
                 <!-- Photo de profil avec bordure dégradée -->
                 <div class="avatar">
                     <a href="assets/photo.jpeg" data-lightbox="profil" data-title="Américo Filipe Silva da Costa">
@@ -90,7 +98,7 @@
                     </div>
                 </div>
 
-            <!-- Compétences techniques avec barre de progression -->
+            <!-- Compétences techniques - barre de progression -->
                 <div class="sb-section">
                     <h2 class="sb-title"><i class="fa-solid fa-code" 
                         aria-hidden="true"></i> Compétences techniques</h2>
@@ -131,7 +139,7 @@
                             <div class="skill-fill" data-width="65"></div>
                         </div>
                     </div>
-                    <div class="tags">
+                <div class="tags">
                         <span class="tag">Git</span>
                         <span class="tag">GitHub</span>
                         <span class="tag">Packet Tracer</span>
@@ -141,29 +149,70 @@
                     </div>
                 </div>
 
-            <!-- Certifications -->
+            <!-- Certifications pour Swiper -->
                 <div class="sb-section">
-                    <h2 class="sb-title"><i class="fa-solid fa-certificate" 
+                    <h2 class="sb-title"><i class="fa-solid fa-certificate"
                         aria-hidden="true"></i> Certifications</h2>
-                    <div class="cert-item">
-                        <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-                        <div>
-                            <strong>Introduction to Cybersecurity</strong><br>
-                            <span class="cert-issuer">Cisco Networking Academy · 2026</span>
+                    <div class="swiper cert-swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide cert-slide">
+                                <a href="assets/introduction-to-cybersecurity.png"
+                                    data-lightbox="certifications"
+                                    data-title="Introduction to Cybersecurity - Cisco Networking Academy · 2026">
+                                    <img src="assets/introduction-to-cybersecurity.png"
+                                        alt="Badge Introduction to Cybersecurity - Cisco Networking Academy 2026"
+                                        class="cert-badge">
+                                </a>
+                                <strong>Introduction to Cybersecurity</strong>
+                                <span class="cert-issuer">Cisco Networking Academy · 2026</span>
+                            </div>
+                            <div class="swiper-slide cert-slide">
+                                <a href="assets/ccna-introduction-to-networks.png"
+                                    data-lightbox="certifications"
+                                    data-title="CCNA : Introduction to Networks - Cisco Networking Academy · 2025">
+                                    <img src="assets/ccna-introduction-to-networks.png"
+                                        alt="Badge CCNA Introduction to Networks - Cisco Networking Academy 2025"
+                                        class="cert-badge">
+                                </a>
+                                <strong>CCNA : Introduction to Networks</strong>
+                                <span class="cert-issuer">Cisco Networking Academy · 2025</span>
+                            </div>
+                            <div class="swiper-slide cert-slide">
+                                <a href="assets/introduction-to-iot.png"
+                                    data-lightbox="certifications"
+                                    data-title="Introduction to IoT and Digital Transformation - Cisco Networking Academy · 2024">
+                                    <img src="assets/introduction-to-iot.png"
+                                        alt="Badge Introduction to IoT and Digital Transformation - Cisco Networking Academy 2024"
+                                        class="cert-badge">
+                                </a>
+                                <strong>Introduction to IoT and Digital Transformation</strong>
+                                <span class="cert-issuer">Cisco Networking Academy · 2024</span>
+                            </div>
                         </div>
+                        <div class="swiper-pagination"></div>
                     </div>
-                    <div class="cert-item">
-                        <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-                        <div>
-                            <strong>CCNA : Introduction to Networks</strong><br>
-                            <span class="cert-issuer">Cisco Networking Academy · 2025</span>
+                    <!-- Liste statique des certifications -->
+                    <div class="cert-print">
+                        <div class="cert-item">
+                            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                            <div>
+                                <strong>Introduction to Cybersecurity</strong><br>
+                                <span class="cert-issuer">Cisco Networking Academy · 2026</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="cert-item">
-                        <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
-                        <div>
-                            <strong>Introduction to IoT and Digital Transformation</strong><br>
-                            <span class="cert-issuer">Cisco Networking Academy · 2024</span>
+                        <div class="cert-item">
+                            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                            <div>
+                                <strong>CCNA : Introduction to Networks</strong><br>
+                                <span class="cert-issuer">Cisco Networking Academy · 2025</span>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+                            <div>
+                                <strong>Introduction to IoT and Digital Transformation</strong><br>
+                                <span class="cert-issuer">Cisco Networking Academy · 2024</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -316,12 +365,18 @@
             integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ==" 
             crossorigin="anonymous" 
             referrerpolicy="no-referrer"></script>
-        <!-- jQuery Waypoints -->
+        <!-- Particles.js -->
         <script 
-            src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" 
-            integrity="sha512-CEiA+78TpP9KAIPzqBvxUv8hy41jyI3f2uHi7DGp/Y/Ka973qgSdybNegWFciqh6GrN2UePx2KkflnQUbUhNIA==" 
-            crossorigin="anonymous" 
-            referrerpolicy="no-referrer"></script>
+        src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js" 
+        integrity="sha512-Kef5sc7gfTacR7TZKelcrRs15ipf7+t+n7Zh6mKNJbmW+/RRdCW9nwfLn4YX0s2nO6Kv5Y2ChqgIakaC6PW09A==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer"></script>
+        <!-- Swiper.js -->
+        <script 
+        src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" 
+        integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA==" 
+        crossorigin="anonymous" 
+        referrerpolicy="no-referrer"></script>
         <!-- Lightbox2 -->
         <script 
             src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.5/js/lightbox.min.js" 
