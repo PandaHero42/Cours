@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr"><head prefix="og: http://ogp.me/ns#">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Test events</title>
+	<style>
+	html { font-size:125%; font-family:Calibri, sans-serif; padding:0; margin:0; text-align:center;}
+	body { font-weight:bold; /*user-select:none;*/ padding:1rem; margin:0;  }
+	header {  text-align:center; }
+	h1 { }
+	p { color:#555; max-width:666px; margin:0.25em auto; text-align:left; }
+	label, input, select { padding:0.5rem; font-size:1rem; }
+	input[type="checkbox"], input[type="radio"] { height:1rem; width:1rem; }
+	section { border-top:1px solid #000; }
+	section>div { display:flex; flex-flow:row wrap; justify-content:center; }
+	section>div>* { padding:0.666rem; margin:0.666rem; border-radius:0.5rem; border:2px solid #000;  }
+	section>div>*>div { padding:0.5rem; margin:0.5rem; border-radius:0.5rem; border:2px solid #000; }
+	.col1 { background-color: #5dade2 ; }
+	.col2 { background-color: #58d68d ; }
+	.col3 { background-color: #dc7633 ; }
+	.col4 { background-color: #af7ac5 ; }
+	.col5 { background-color: #f7dc6f ; }
+	.bof { border-style:dashed; opacity:0.667; }
+	</style>
+	<script>
+	function hop(x) {
+		let nb = 5;
+		for (let i = 1 ; i<=nb ; i++) {
+			if (x.classList.contains('col'+i)) { 
+				x.classList.remove('col'+i); 
+				if (i+1<=nb) x.classList.add('col'+(i+1)); 
+				else x.classList.add('col1'); 
+				break;
+			}
+		}
+	}
+	// KEYDOWN
+	document.addEventListener("keydown", function (event) {
+		hop(keydown);
+		keydown.firstElementChild.innerText = event.key;
+	});
+	// KEYUP
+	document.addEventListener("keyup", function (event) {
+		hop(keyup);
+		keyup.firstElementChild.innerText = event.key;
+	});
+	// RESIZE
+	window.addEventListener("resize", function (event) {
+		hop(div_resize);
+		div_resize.firstElementChild.innerText = window.innerWidth + ' x ' + window.innerHeight;
+	});
+	// SCROLL
+	document.addEventListener("scroll", function (event) {
+		hop(div_scroll);
+		div_scroll.firstElementChild.innerText = window.scrollY;
+	});
+	// DOMContentLoaded
+	window.addEventListener("DOMContentLoaded", () => {
+		hop(div_DOMContentLoaded);
+		div_DOMContentLoaded.firstElementChild.innerText = 'DOM loaded';
+	});
+	// LOAD
+	window.addEventListener("load", () => {
+		hop(div_load);
+		div_load.firstElementChild.innerText = 'loaded';
+	});
+	// UNLOAD
+	window.addEventListener("unload", () => {
+		hop(div_unload);
+		div_unload.firstElementChild.innerText = 'unloaded';
+	});
+	// ONLINE
+	window.addEventListener("online", () => {
+		hop(div_online);
+		div_online.firstElementChild.innerText = 'online';
+	});
+	// OFFLINE
+	window.addEventListener("offline", () => {
+		hop(div_offline);
+		div_offline.firstElementChild.innerText = 'offline';
+	});
+	</script>
+<meta id="ConnectiveDocSignExtentionInstalled" name="ConnectiveDocSignExtentionInstalled" data-extension-version="1.0.5"></head>
+<body>
+	<header>
+		<h1>Évènements JavaScript</h1>
+		<p>Petit labo interactif pour découvrir et tester les évènements en JavaScript.</p>
+		<p>Le déclenchement des évènements est marqué par un changement de couleur.</p>
+	</header>
+	<section>
+		<h2>Souris et pointeurs</h2>
+		<div>
+			<div onmousedown="hop(this)" class="col1 bof">mousedown</div>
+			<div onmouseup="hop(this)" class="col1 bof">mouseup</div>
+			<div onclick="hop(this)" class="col5">click</div>
+			<div ondblclick="hop(this)" class="col5 bof">dblclick</div>
+			<!--<div ontouchstart="hop(this)" class="col5">touchstart</div>
+			<div ontouchend="hop(this)" class="col5">touchend</div>-->
+			<div onpointerdown="hop(this)" class="col3">pointerdown</div>
+			<div onpointerup="hop(this)" class="col3">pointerup</div>
+		</div>
+		<div>
+			<div onmousemove="hop(this)" class="col1 bof">mousemove</div>
+			<!--<div ontouchmove="hop(this)" class="col5">touchmove</div>-->
+			<div onpointermove="hop(this)" class="col3">pointermove</div>
+		</div>
+		<div>
+			<div onmouseover="hop(this)" class="col1 bof">mouseover<div>enfant</div></div>
+			<div onmouseenter="hop(this)" class="col1 bof">mouseenter<div>enfant</div></div>
+			<div onpointerover="hop(this)" class="col3 bof">pointerover<div>enfant</div></div>
+			<div onpointerenter="hop(this)" class="col3">pointerenter<div>enfant</div></div>
+		</div>
+		<div>
+			<div onmouseout="hop(this)" class="col1 bof">mouseout<div>enfant</div></div>
+			<div onmouseleave="hop(this)" class="col1 bof">mouseleave<div>enfant</div></div>
+			<div onpointerout="hop(this)" class="col3 bof">pointerout<div>enfant</div></div>
+			<div onpointerleave="hop(this)" class="col3">pointerleave<div>enfant</div></div>
+		</div>
+		<p>Les évènements "pointer..." couvrent toutes sortes de pointeurs : 
+souris, stylets et doigts. Ils sont à privilégier au détriment des 
+évènements "mouse..." qui ne couvrent que les souris.</p>
+	</section>
+	<section>
+		<h2>Formulaires</h2>
+		<div>
+			<label class="col2">focus<br><input type="text" onfocus="hop(this.parentNode)"></label>
+			<label class="col2">blur<br><input type="text" onblur="hop(this.parentNode)"></label>
+			<label class="col2">change<br><input type="text" onchange="hop(this.parentNode)"></label>
+			<label class="col4">input<br><input type="text" oninput="hop(this.parentNode)"></label>
+		</div>
+		<div>
+			<label class="col2">focus<br><input type="number" onfocus="hop(this.parentNode)"></label>
+			<label class="col2">blur<br><input type="number" onblur="hop(this.parentNode)"></label>
+			<label class="col2">change<br><input type="number" onchange="hop(this.parentNode)"></label>
+			<label class="col4">input<br><input type="number" oninput="hop(this.parentNode)"></label>
+		</div>
+		<div>
+			<label class="col2 bof" for="checkbox2">focus<br><input type="checkbox" id="checkbox2" onfocus="hop(this.parentNode)" class="col1"></label>
+			<label class="col2 bof" for="checkbox3">blur<br><input type="checkbox" id="checkbox3" onblur="hop(this.parentNode)" class="col1"></label>
+			<label class="col2" for="checkbox4">change<br><input type="checkbox" id="checkbox4" onchange="hop(this.parentNode)" class="col1"></label>
+			<label class="col4" for="checkbox1">click<br><input type="checkbox" id="checkbox1" onclick="hop(this.parentNode)" class="col1"></label>
+			<label class="col2 bof" for="radio2">focus<br><input type="radio" name="famille" id="radio2" onfocus="hop(this.parentNode)" class="col1"></label>
+			<label class="col2 bof" for="radio3">blur<br><input type="radio" name="famille" id="radio3" onblur="hop(this.parentNode)" class="col1"></label>
+			<label class="col2" for="radio4">change<br><input type="radio" name="famille" id="radio4" onchange="hop(this.parentNode)" class="col1"></label>
+			<label class="col4" for="radio1">click<br><input type="radio" name="famille" id="radio1" onclick="hop(this.parentNode)" class="col1"></label>
+		</div>
+		<div>
+			<label class="col2 bof" for="focus_select">focus sur le select<br><select onfocus="hop(this.parentNode)" id="focus_select"><option value="opt1" selected="selected">option 1</option><option value="opt2">option 2</option></select></label>
+			<label class="col2 bof" for="blur_select">blur sur le select<br><select onblur="hop(this.parentNode)" id="blur_select"><option value="opt1" selected="selected">option 1</option><option value="opt2">option 2</option></select></label>
+			<label class="col2" for="change_select">change sur le select<br><select onchange="hop(this.parentNode)" id="change_select"><option value="opt1" selected="selected">option 1</option><option value="opt2">option 2</option></select></label>
+		</div>
+		<p>L'évènement "select" ne fait pas référence à l'élément html &lt;select&gt; mais à la sélection de texte dans un champ.</p>
+	</section>
+	<section>
+		<h2>Clavier</h2>
+		<p>Ici, l'écoute a été appliquée à tout le document et pas seulement à l'élément.</p>
+		<div>
+			<div onkeydown="keyhop(this)" id="keydown" class="col5">keydown<div>-</div></div>
+			<div onkeyup="keyhop(this)" id="keyup" class="col5">keyup<div>-</div></div>
+		</div>
+	</section>
+	<section>
+		<h2>Fenêtre</h2>
+		<p>Ici, l'écoute a été appliquée à tout le document et pas seulement à l'élément.</p>
+		<div>
+			<div id="div_resize" class="col4">resize<div>-</div></div>
+			<div id="div_scroll" class="col4">scroll<div>-</div></div>
+		</div>
+		<div>
+			<div id="div_DOMContentLoaded" class="col5">DOMContentLoaded<div>DOM loaded</div></div>
+			<div id="div_load" class="col5">load<div>loaded</div></div>
+			<div id="div_unload" class="col4">unload<div>-</div></div>
+			<div id="div_online" class="col4">online<div>-</div></div>
+			<div id="div_offline" class="col4">offline<div>-</div></div>
+		</div>
+	</section>
+
+</body></html>

@@ -1,0 +1,28 @@
+Examen de Développement front-end, septembre 2022
+
+Internet, GSM et clés USB sont interdits.
+Il est interdit d'ouvrir d'autres fichiers que ceux distribués pour cette épreuve.
+
+Au chargement, la page comporte :
+- un header contenant 12 boutons, chacun contenant une image d'animal et un compteur
+- un 2e header contenant le total des compteurs
+- un "main" vide
+
+Au chargement de la page,
+	Pour chaque animal,
+		Le compteur prend une valeur aléatoire entière comprise entre 1 et 4
+	Le total prend pour valeur la somme des compteurs
+
+Au clic sur un animal, 
+	Si le compteur de l'animal est supérieur à 0,
+		Une image de l'animal cliqué est ajoutée à la fin du main
+		Le compteur sous l'animal cliqué diminue de 1
+		Le total est aussi décrémenté
+	Si le compteur de l'animal passe à zéro, 
+		L'animal et son compteur deviennent transparents en recevant la classe "vide"
+	Si le total passe à zéro,
+		Le total devient vert (classe "vide")
+
+
+
+

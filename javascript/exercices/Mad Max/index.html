@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<title>Mad Max Gallery</title>
+	<style>
+		* { box-sizing: border-box; margin: 0; padding: 0; }
+		body { background: #111; color: #fff; font-family: Calibri, sans-serif; }
+
+		#burger {
+			position: fixed; top: 10px; left: 10px; z-index: 100;
+			width: 40px; height: 40px; cursor: pointer; border: none;
+			background: #333 url(menu.svg) center/25px no-repeat;
+		}
+
+		#volet {
+			position: fixed; top: 0; left: -200px;
+			width: 200px; height: 100%;
+			background: #222; z-index: 99;
+			transition: left 0.3s ease;
+			padding-top: 60px;
+		}
+		#volet.ouvert { left: 0; }
+		#volet a { display: block; color: #fff; text-decoration: none; padding: 12px 20px; border-top: 1px solid #444; }
+		#volet a:hover { background: #444; }
+
+		#galerie { display: flex; flex-wrap: wrap; padding: 10px; }
+		#galerie figure { width: 25%; padding: 5px; cursor: pointer; }
+		#galerie figure img { width: 100%; display: block; transition: opacity 0.2s; }
+		#galerie figure:hover img { opacity: 0.7; }
+		#galerie figcaption { text-align: center; font-size: 0.85rem; padding: 4px; color: #aaa; }
+
+		#lightbox {
+			display: none;
+			position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+			background: rgba(0,0,0,0.85);
+			z-index: 200;
+			cursor: pointer;
+		}
+		#lightbox img {
+			position: absolute; top: 50%; left: 50%;
+			transform: translate(-50%, -50%);
+			max-width: 90%; max-height: 90vh;
+		}
+	</style>
+</head>
+<body>
+
+	<button id="burger"></button>
+
+	<nav id="volet">
+		<a href="#">Lien 1</a>
+		<a href="#">Lien 2</a>
+		<a href="#">Lien 3</a>
+		<a href="#">Lien 4</a>
+		<a href="#">Lien 5</a>
+	</nav>
+
+	<div id="galerie">
+		<figure><img src="img/max1.jpg" alt=""><figcaption>Photo 1</figcaption></figure>
+		<figure><img src="img/max2.jpg" alt=""><figcaption>Photo 2</figcaption></figure>
+		<figure><img src="img/max3.jpg" alt=""><figcaption>Photo 3</figcaption></figure>
+		<figure><img src="img/max4.jpg" alt=""><figcaption>Photo 4</figcaption></figure>
+		<figure><img src="img/max5.jpg" alt=""><figcaption>Photo 5</figcaption></figure>
+		<figure><img src="img/max6.jpg" alt=""><figcaption>Photo 6</figcaption></figure>
+		<figure><img src="img/max7.jpg" alt=""><figcaption>Photo 7</figcaption></figure>
+		<figure><img src="img/max8.jpg" alt=""><figcaption>Photo 8</figcaption></figure>
+		<figure><img src="img/max9.jpg" alt=""><figcaption>Photo 9</figcaption></figure>
+		<figure><img src="img/max10.jpg" alt=""><figcaption>Photo 10</figcaption></figure>
+		<figure><img src="img/max11.jpg" alt=""><figcaption>Photo 11</figcaption></figure>
+		<figure><img src="img/max12.jpg" alt=""><figcaption>Photo 12</figcaption></figure>
+	</div>
+
+	<div id="lightbox">
+		<img src="" alt="">
+	</div>
+
+	<script src="jquery.min.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>

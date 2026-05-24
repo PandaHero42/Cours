@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Chats</title>
+	<meta name="author" content="Ivan Miller">
+	<style>
+		html { font-size:125%; }
+		body { font-family:Helvetica; background-color:#fbfbfb; font-size:1rem; text-align:center; margin:0; padding:0; color:#444; }
+		select, input, button { font-size:1rem; padding:1em; }
+		label { display:block; margin:0.5rem; }
+		#chats { display:flex; flex-wrap:wrap; justify-content:center; }
+		#chats img { width:120px; }
+		
+		@keyframes bougeotte {
+		  0% { transform: rotate(0deg); }
+		  10% { transform: rotate(5deg); }
+		  30% { transform: rotate(-5deg); }
+		  50% { transform: rotate(2deg); }
+		  70% { transform: rotate(-2deg); }
+		  100% { transform: rotate(0deg); }
+		}
+		#chats img {
+			animation: bougeotte 0.3s;
+		}
+		figure.chats.hola { transform:scale(1.25); font-weight:bold; }
+	</style>
+</head>
+<body>
+	<img src="multichats.jpg" alt="" width="112">
+	<h1>Chats</h1>
+	<section>
+		<label for="nom">Nom<br>
+			<input name="nom" id="nom" autocomplete="off">
+		</label>
+		<label for="nom">Couleur<br>
+		<select name="couleur" id="couleur" autocomplete="off">
+			<option value="beige">Beige</option>
+			<option value="blanc">Blanc</option>
+			<option value="brun">Brun</option>
+			<option value="gris">Gris</option>
+			<option value="noir">Noir</option>
+			<option value="roux">Roux</option>
+			<option value="tigre">Tigre</option>
+		</select>
+		</label>
+		<button id="ajouter" autocomplete="off">Ajouter</button>
+		<button id="vider" disabled autocomplete="off">Vider (<span id="nombre">0</span>)</button>
+	</section>
+	<div id="chats">
+		<!--<figure><img src="blanc.jpg" alt=""><figcaption>Yuyu</figcaption></figure>-->
+	</div>
+	
+	<script src="jquery.min.js"></script>
+	<script>
+	$( function() {
+		$('#ajouter').on('click', function() {
+			let nom = $('#nom').val();
+			let couleur = $('#couleur').val();
+			$('#chats').append('<figure class="chats"><img src="img/'+couleur+'.jpg" alt=""><figcaption>'+nom+'</figcaption></figure>');
+			$('#nom').val('');
+			$('#vider').attr('disabled', false);
+			$('#nombre').text( $('#chats figure').length );
+		});
+		
+		$('#vider').on('click', function() {
+			$('#chats').empty();
+			$('#nombre').text( 0 );
+			$('#vider').attr('disabled', true);
+		});
+		
+		$('#nom').on('input', function() {
+			let nom = $(this).val();
+			
+			if (nom == '') {
+				$('#ajouter').attr('disabled', true);
+			}
+			else {
+				$('#ajouter').attr('disabled', false);
+				$('.chats').each( function() {
+					console.log($('figcaption',this).text());
+					if ( $('figcaption',this).text()==nom ) {
+						$(this).addClass('hola');
+						console.log(nom);
+					}
+					else {
+						$(this).removeClass('hola');
+					}
+				});
+			}
+		});
+	});
+	</script>
+</body>
+</html>

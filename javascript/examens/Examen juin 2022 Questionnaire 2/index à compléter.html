@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Examen Développement front-end 2022 : conteneurs</title>
+	<meta name="author" content=" votre nom ici ">
+	<style>
+		body { font-family:calibri; background-color:#dbd; font-size:1.25rem; text-align:center; margin:0; padding:0; color:#222; }
+		h1, h2, h3, h4, h5, h6, p { margin:0.25em 0; }
+		#main { 
+			max-width:1000px;
+			margin:0 auto;
+			padding:1rem; 
+			background-color:#fff; 
+		}
+		.ligne { display:flex; flex-flow:row wrap; justify-content:center; }
+		
+		.forme { width:80px; height:80px; background-color:#804; cursor:pointer; margin:1rem; }
+		.forme:hover { background-color:#c04; }
+		.forme:active { background-color:#ff4; }
+		.forme.goodjob { background-color:#0c4; }
+		.forme.badjob { background-color:#0008; }
+		
+		.triangle { clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
+		.cercle { clip-path: circle(50% at 50% 50%); }
+		.carré { clip-path: inset(5% 5% 5% 5%);}
+		.pentagone { clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);}
+		.trapèze { clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);}
+		.parallélogramme { clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%); }
+		.losange { clip-path: polygon(50% 0%, 95% 50%, 50% 100%, 5% 50%); }
+		.octogone { clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%); }
+	</style>
+</head>
+<body>
+	<header id="header">
+		<h1>Trouve les <span id="laforme">formes</span> !</h1>
+	</header>
+	<main id="main">
+	</main>
+	<script src="jquery.min.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>

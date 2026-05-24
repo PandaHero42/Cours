@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Examen Développement front-end 2022</title>
+	<meta name="author" content="">
+	<style>
+		body { font-family:calibri; font-size:1.5rem; text-align:center; margin:0; padding:0; color:#222; }
+		header { padding:1%; border-bottom: 2px solid #222; display:flex; justify-content:space-around; flex-wrap:wrap; }
+		header#animaux div { width:6.166666%; padding:1%;}
+		header#animaux div.vide { opacity:0.5; }
+		header#animaux div img { width:100%; }
+		#plus { font-size:5rem; font-weight:bold; }
+		.bouton { cursor:pointer; }
+		.bouton:hover, .bouton:focus { background-color:#ccc; }
+		.bouton:active { background-color:#dd8; }
+		
+		#total { font-size:2rem; }
+		#total.vide { background-color:#6d6; }
+		#main { padding:1%; text-align:left; }
+		#main img { width:64px; margin:8px; }
+		
+		@media only screen and (max-width: 960px) {
+			header#animaux div { width:12.666666%; padding:2%;}
+		}
+		@media only screen and (max-width: 640px) {
+			header#animaux div { width:18.5%; padding:3%;}
+		}
+	</style>
+</head>
+<body>
+	<header id="animaux">
+		<div class="bouton"><img src="img/bouc.png" alt=""><br><span>0</span></div>
+		<div class="bouton"><img src="img/vache.png" alt=""><br><span>0</span></div>
+		<div class="bouton"><img src="img/mouton.png" alt=""><br><span>0</span></div>
+		<div class="bouton"><img src="img/oiseau.png" alt=""><br><span>0</span></div>
+		<div class="bouton"><img src="img/lapin.png" alt=""><br><span>0</span></div>
+		<div class="bouton"><img src="img/chat.png" alt=""><br><span>0</span></div>
+		<div class="bouton"><img src="img/chien.png" alt=""><br><span>0</span></div>
+		<div class="bouton"><img src="img/poulpe.png" alt=""><br><span>0</span></div>
+		<div class="bouton"><img src="img/zebre.png" alt=""><br><span>0</span></div>
+		<div class="bouton"><img src="img/girafe.png" alt=""><br><span>0</span></div>
+		<div class="bouton"><img src="img/elephant.png" alt=""><br><span>0</span></div>
+		<div class="bouton"><img src="img/tigre.png" alt=""><br><span>0</span></div>
+	</header>
+	<header id="total">
+		<div><span>0</span></div>
+	</header>
+		
+	<main id="main">
+	</main>
+	<script src="script.js"></script>
+</body>
+</html>

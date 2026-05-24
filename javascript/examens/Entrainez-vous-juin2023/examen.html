@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Examen JS</title>
+		<style>
+		html { background-color:#ddd; font-family:Calibri; font-size:200%; color:#444; text-align:center; }
+		section {margin:1rem; }
+		.bouton { opacity:0.5;  background-color:white; border-radius:1rem; padding:1rem; display:inline-block; user-select:none; border: 2px solid #444;}
+		.bouton.actif { opacity:1; cursor:pointer; }
+		.bouton.actif:hover, .bouton.actif:focus { background-color:#aea; color:#000; }
+		.bouton.actif:active { background-color:#eaa; }
+		
+		.flex { display:flex; justify-content:center; align-items:center; }
+		.cartouche { background-color:#8e8; border-radius:0.75rem; width:0.75rem; height:0.75rem; margin:0.25rem; }
+		.cartouche.vide { background-color:#e88; }
+		
+		.jeton { background-color:#111; color:#fff; border-radius:1.5rem; width:3rem; height:3rem; display:inline-flex; justify-content:center; align-items:center; cursor:pointer; user-select:none; }
+		.jeton.libre { background-color:#666; }
+		
+		#victoire { font-size:8rem; position:fixed; left:0; right:0; top:0; bottom:0; display:inline-flex; justify-content:center; align-items:center; background-color:#eaa8; display:none; user-select:none;}
+		#perdu { font-size:8rem; position:fixed; left:0; right:0; top:0; bottom:0; display:inline-flex; justify-content:center; align-items:center; background-color:#eaa8; display:none; user-select:none;}
+		</style>
+	</head>
+	<body>
+		<section>
+			<div class="bouton actif" id="pioche">Pioche</div>
+			<div class="flex">
+				<div class="cartouche" id="c1"></div>
+				<div class="cartouche" id="c2"></div>
+				<div class="cartouche" id="c3"></div>
+				<div class="cartouche" id="c4"></div>
+				<div class="cartouche" id="c5"></div>
+			</div>
+		</section>
+		<section id="plateau">
+			<div class="jeton libre"></div>
+			<div class="jeton libre"></div>
+			<div class="jeton libre"></div>
+			<div class="jeton libre"></div>
+			<div class="jeton libre"></div>
+			<div class="jeton libre"></div>
+		</section>
+		<section>
+			<h3>Total : <span id="total"></span></h3>
+			<p>Jeu du 44 : bloque les cases de ton choix et pioche des jetons pour atteindre 44 !</p>
+		</section>
+		
+		<div id="victoire">Victoire ! </div>
+		<div id="perdu">Perdu ! </div>
+		 <script src="jquery.min.js"></script>
+		 <script src="script.js"></script>
+	</body>
+</html>

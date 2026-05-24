@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<title>Examen JS 2019</title>
+	<style>
+		* { box-sizing: border-box; margin: 0; padding: 0; }
+		body { background: #eee; font-family: Calibri, sans-serif; overflow: hidden; }
+
+		#cases {
+			display: flex;
+			justify-content: center;
+			gap: 10px;
+			padding: 20px;
+			background: #ddd;
+			border-bottom: 2px solid #aaa;
+		}
+
+		.case {
+			width: 60px; height: 60px;
+			border: 2px solid #333;
+			background: white;
+			display: flex; justify-content: center; align-items: center;
+			font-size: 1.5rem; font-weight: bold;
+			cursor: pointer;
+		}
+		.case:hover { background: #bbb; }
+
+		.jeton {
+			position: absolute;
+			width: 60px; height: 60px;
+			background: #666;
+			color: white;
+			border-radius: 50%;
+			display: flex; justify-content: center; align-items: center;
+			font-size: 1.5rem; font-weight: bold;
+			cursor: pointer;
+			user-select: none;
+		}
+		.jeton:hover { background: #999; }
+		.jeton.noir { background: #000; }
+	</style>
+</head>
+<body>
+
+	<div id="cases"></div>
+
+	<script src="jquery.min.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>

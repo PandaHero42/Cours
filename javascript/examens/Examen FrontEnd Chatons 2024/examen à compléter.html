@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Chats</title>
+	<meta name="author" content="Ivan Miller">
+	<style>
+		html { font-size:125%; }
+		body { font-family:Helvetica; background-color:#fbfbfb; font-size:1rem; text-align:center; margin:0; padding:0; color:#444; }
+		select, input, button { font-size:1rem; padding:1em; }
+		label { display:block; margin:0.5rem; }
+		#chats { display:flex; flex-wrap:wrap; justify-content:center; }
+		#chats img { width:120px; }
+		
+		@keyframes bougeotte {
+		  0% { transform: rotate(0deg); }
+		  10% { transform: rotate(5deg); }
+		  30% { transform: rotate(-5deg); }
+		  50% { transform: rotate(2deg); }
+		  70% { transform: rotate(-2deg); }
+		  100% { transform: rotate(0deg); }
+		}
+		#chats img {
+			animation: bougeotte 0.3s;
+		}
+		figure.chat.hola { transform:scale(1.25); font-weight:bold; }
+	</style>
+</head>
+<body>
+	<img src="multichats.jpg" alt="" width="112">
+	<h1>Chats</h1>
+	<section>
+		<label for="nom">Nom<br>
+			<input name="nom" id="nom" autocomplete="off">
+		</label>
+		<label for="nom">Couleur<br>
+		<select name="couleur" id="couleur" autocomplete="off">
+			<option value="beige">Beige</option>
+			<option value="blanc">Blanc</option>
+			<option value="brun">Brun</option>
+			<option value="gris">Gris</option>
+			<option value="noir">Noir</option>
+			<option value="roux">Roux</option>
+			<option value="tigre">Tigre</option>
+		</select>
+		</label>
+		<button id="ajouter" disabled autocomplete="off">Ajouter</button>
+		<button id="vider" disabled autocomplete="off">Vider (<span id="nombre">0</span>)</button>
+	</section>
+	<div id="chats">
+		<!--<figure><img src="blanc.jpg" alt=""><figcaption>Yuyu</figcaption></figure>-->
+	</div>
+	<script src="jquery.min.js"></script>
+	<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+Examen de Développement front-end, juin 2024 : Chatons
+
+Internet, GSM et clés USB sont interdits.
+Il est interdit d'ouvrir d'autres fichiers que ceux distribués pour cette épreuve.	
+ 
+La page comporte un champ texte #nom, une liste de sélection #couleur, un bouton #ajouter et un bouton #vider. 
+
+Au clic sur #ajouter,
+	On ajoute un chat avec le bon nom et la bonne couleur (voir le code HTML d'un chat en commentaire dans le code fourni)
+	On vide le champ #nom
+	Le bouton #vider passe son attribut disabled à false.
+	Le nombre entre parenthèse dans le bouton #vider vaut le nombre de chats dans la zone #chats.
+
+Au clic sur #vider,
+	La zone #chats se vide de son contenu.
+	Le nombre entre parenthèse dans le bouton #vider passe à zéro.
+	Le bouton #vider passe son attribut disabled à true.
+
+
+Le champ #nom est surveillé : à chaque modif de sa valeur (appui sur touche du clavier),
+	Si la valeur de ce champ nom est vide,
+		On désactive le champ (disabled passe à true)
+	Sinon,
+		On enlève la classe "hola" aux chats
+		On recherche le nom parmi les chats
+		Si on trouve un chat portant le nom,
+			On ajoute la classe "hola" à ce chat (ce qui provoque son zoom).
+
+	Si la valeur du champ n'est pas vide (""), le bouton #ajouter passe son attribut disabled à false.
+	Sinon, le bouton #ajouter passe son attribut disabled à true.
+
+
+
+
+
