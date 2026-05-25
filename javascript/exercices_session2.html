@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices jQuery - Session 2</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Syne', sans-serif;
+            background-color: #0f0f0f;
+            color: #f0f0f0;
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+            color: #f0f0f0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .exercise {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .exercise-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            color: #ff6b35;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .exercise h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #f0f0f0;
+            margin-bottom: 8px;
+        }
+
+        .exercise p {
+            color: #999;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .zone-travail {
+            background: #111;
+            border: 1px dashed #333;
+            border-radius: 8px;
+            padding: 22px;
+            min-height: 80px;
+            margin-bottom: 14px;
+        }
+
+        input[type="text"], input[type="number"] {
+            padding: 9px 14px;
+            border: 1px solid #333;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: 'Space Mono', monospace;
+            background: #1a1a1a;
+            color: #f0f0f0;
+            width: 200px;
+            margin-right: 8px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        input[type="text"]:focus, input[type="number"]:focus {
+            border-color: #ff6b35;
+        }
+
+        button {
+            background: #ff6b35;
+            color: #0f0f0f;
+            border: none;
+            padding: 9px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            transition: background 0.2s, transform 0.1s;
+            margin-right: 6px;
+            margin-top: 4px;
+        }
+        button:hover { background: #ff8555; }
+        button:active { transform: scale(0.97); }
+        button:disabled { background: #333; color: #666; cursor: not-allowed; transform: none; }
+
+        .resultat {
+            margin-top: 14px;
+            padding: 10px 14px;
+            background: #0f0f0f;
+            border-left: 3px solid #ff6b35;
+            border-radius: 4px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            color: #f0f0f0;
+            display: none;
+        }
+
+        .hint {
+            background: #1a1500;
+            border-left: 3px solid #ffc107;
+            padding: 10px 14px;
+            border-radius: 4px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.78rem;
+            color: #cca800;
+            line-height: 1.7;
+        }
+        .hint code {
+            background: #2a2000;
+            padding: 1px 5px;
+            border-radius: 3px;
+        }
+
+        /* Exo 1 - Génération de liste */
+        #liste-animaux { margin-top: 14px; }
+        .animal-item {
+            background: #222;
+            border: 1px solid #333;
+            border-radius: 6px;
+            padding: 10px 14px;
+            margin-bottom: 8px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            color: #ccc;
+            display: flex;
+            justify-content: space-between;
+        }
+        .animal-item span { color: #ff6b35; font-weight: bold; }
+
+        /* Exo 2 - Boucle each */
+        .carte {
+            display: inline-block;
+            background: #222;
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 14px 20px;
+            margin: 6px;
+            font-family: 'Space Mono', monospace;
+            font-size: 1.1rem;
+            cursor: default;
+            transition: border-color 0.2s;
+        }
+        #score-total {
+            margin-top: 12px;
+            font-family: 'Space Mono', monospace;
+            font-size: 1rem;
+            color: #ff6b35;
+        }
+
+        /* Exo 3 - keyup + disabled */
+        #compteur-lettres {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 8px;
+        }
+        #apercu {
+            margin-top: 10px;
+            padding: 10px;
+            background: #111;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            min-height: 40px;
+            color: #ff6b35;
+            font-weight: 700;
+            display: none;
+        }
+
+        /* Exo 4 - fadeIn / fadeOut */
+        .message-box {
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-weight: 700;
+            display: none;
+        }
+        #msg-succes { background: #0d2b0d; border: 1px solid #2d7a2d; color: #5dba5d; }
+        #msg-erreur { background: #2b0d0d; border: 1px solid #7a2d2d; color: #ba5d5d; }
+
+        /* Exo 5 - animate / jauge */
+        #barre-container {
+            background: #222;
+            border-radius: 20px;
+            height: 22px;
+            margin: 14px 0;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+        #barre {
+            height: 22px;
+            background: linear-gradient(90deg, #ff6b35, #ff3377);
+            border-radius: 20px;
+            width: 0%;
+            transition: none;
+        }
+        #valeur-barre {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        /* Exo 6 - génération grille */
+        #grille-cases {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 12px;
+        }
+        .case {
+            width: 55px;
+            height: 45px;
+            background: #222;
+            border: 1px solid #333;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #ccc;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+        .case:hover { background: #2a2a2a; }
+        .case.selectionnee { background: #ff6b35; color: #0f0f0f; border-color: #ff6b35; }
+        #info-grille {
+            margin-top: 10px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚡ Exercices jQuery</h1>
+        <p class="subtitle">Session 2 — Compétences d'examen</p>
+
+        <!-- ===== EXERCICE 1 ===== -->
+        <div class="exercise">
+            <div class="exercise-number">Exercice 01</div>
+            <h2>Génération dynamique au chargement</h2>
+            <p>
+                Au chargement de la page, génère <strong>5 animaux</strong> dynamiquement dans la liste.<br>
+                Chaque animal est pioché aléatoirement dans le tableau ci-dessous, et reçoit un âge aléatoire entre 1 et 15.
+            </p>
+            <div class="zone-travail">
+                <div id="liste-animaux">
+                    <!-- les animaux seront générés ici au chargement -->
+                </div>
+            </div>
+            <div class="hint">
+                💡 <code>var animaux = ["Chat", "Chien", "Lapin", "Perroquet", "Tortue", "Hamster"];</code><br>
+                💡 Pour piocher aléatoirement dans un tableau : <code>animaux[Math.floor(Math.random() * animaux.length)]</code><br>
+                💡 Utilise une boucle <code>for</code> ou <code>for...of</code> et <code>.append()</code> pour injecter dans la page.
+            </div>
+        </div>
+
+        <!-- ===== EXERCICE 2 ===== -->
+        <div class="exercise">
+            <div class="exercise-number">Exercice 02</div>
+            <h2>Boucle .each() sur des éléments</h2>
+            <p>
+                Des cartes avec des nombres sont affichées. Au clic sur <strong>"Calculer le total"</strong>,
+                parcoure toutes les cartes avec <code>.each()</code> et affiche la somme de tous leurs nombres.
+            </p>
+            <div class="zone-travail">
+                <div id="zone-cartes">
+                    <div class="carte">12</div>
+                    <div class="carte">7</div>
+                    <div class="carte">25</div>
+                    <div class="carte">3</div>
+                    <div class="carte">18</div>
+                </div>
+                <br>
+                <button id="btn-calculer">Calculer le total</button>
+                <button id="btn-melanger">Mélanger les valeurs</button>
+                <div id="score-total"></div>
+            </div>
+            <div class="hint">
+                💡 <code>$(".carte").each(function() { let val = parseInt($(this).text()); ... })</code><br>
+                💡 Déclare un compteur <code>let total = 0</code> avant le <code>.each()</code> et additionne dedans.<br>
+                💡 Pour mélanger : regenere des valeurs aléatoires entre 1 et 30 dans chaque carte avec <code>.each()</code> aussi !
+            </div>
+        </div>
+
+        <!-- ===== EXERCICE 3 ===== -->
+        <div class="exercise">
+            <div class="exercise-number">Exercice 03</div>
+            <h2>Surveillance keyup + bouton disabled</h2>
+            <p>
+                Surveille le champ texte à chaque frappe (<code>keyup</code>) :<br>
+                — Affiche en temps réel le nombre de caractères saisis.<br>
+                — Le bouton <strong>"Envoyer"</strong> est <code>disabled</code> si le champ fait moins de 5 caractères, actif sinon.<br>
+                — Affiche un aperçu du texte en temps réel dans la zone prévue.
+            </p>
+            <div class="zone-travail">
+                <input type="text" id="champ-message" placeholder="Tape ton message..." style="width:100%; margin-bottom:10px;">
+                <div id="compteur-lettres">0 caractère(s)</div>
+                <div id="apercu"></div>
+                <br>
+                <button id="btn-envoyer" disabled>Envoyer</button>
+                <div class="resultat" id="resultat-envoi"></div>
+            </div>
+            <div class="hint">
+                💡 <code>$("#champ-message").on("keyup", function() { ... })</code><br>
+                💡 Pour activer/désactiver un bouton : <code>$("#btn-envoyer").prop("disabled", true)</code> ou <code>false</code><br>
+                💡 <code>$(this).val().length</code> donne le nombre de caractères dans le champ.
+            </div>
+        </div>
+
+        <!-- ===== EXERCICE 4 ===== -->
+        <div class="exercise">
+            <div class="exercise-number">Exercice 04</div>
+            <h2>fadeIn / fadeOut</h2>
+            <p>
+                Deux boutons : <strong>"Succès"</strong> et <strong>"Erreur"</strong>.<br>
+                Au clic sur chacun, affiche le message correspondant avec <code>fadeIn()</code>.<br>
+                Si l'autre message est visible, fais-le disparaître avec <code>fadeOut()</code> avant d'afficher le nouveau.
+            </p>
+            <div class="zone-travail">
+                <button id="btn-succes">✅ Succès</button>
+                <button id="btn-erreur">❌ Erreur</button>
+                <br><br>
+                <div class="message-box" id="msg-succes">🎉 Opération réussie avec succès !</div>
+                <div class="message-box" id="msg-erreur">💥 Une erreur s'est produite.</div>
+            </div>
+            <div class="hint">
+                💡 <code>$("#msg-succes").fadeIn(500)</code> — le 500 c'est la durée en millisecondes<br>
+                💡 <code>$("#msg-erreur").fadeOut(300)</code> pour faire disparaître<br>
+                💡 Tu peux enchaîner : <code>fadeOut().fadeIn()</code> — mais attention à l'ordre !
+            </div>
+        </div>
+
+        <!-- ===== EXERCICE 5 ===== -->
+        <div class="exercise">
+            <div class="exercise-number">Exercice 05</div>
+            <h2>Animation .animate() — jauge de progression</h2>
+            <p>
+                Clique sur les boutons pour faire bouger la jauge. Le mouvement doit être <strong>animé</strong> (pas instantané).<br>
+                — <strong>+25%</strong> augmente la jauge de 25 (max 100%)<br>
+                — <strong>-25%</strong> diminue de 25 (min 0%)<br>
+                — <strong>Reset</strong> remet à 0%
+            </p>
+            <div class="zone-travail">
+                <div id="barre-container">
+                    <div id="barre"></div>
+                </div>
+                <div id="valeur-barre">0%</div>
+                <br>
+                <button id="btn-plus25">+25%</button>
+                <button id="btn-moins25">-25%</button>
+                <button id="btn-reset-barre">Reset</button>
+            </div>
+            <div class="hint">
+                💡 Stocke la valeur actuelle dans une variable : <code>let valeur = 0</code><br>
+                💡 Pour animer la largeur : <code>$("#barre").animate({ width: valeur + "%" }, 400)</code><br>
+                💡 N'oublie pas de bloquer à 0 et 100 avec des conditions !
+            </div>
+        </div>
+
+        <!-- ===== EXERCICE 6 ===== -->
+        <div class="exercise">
+            <div class="exercise-number">Exercice 06</div>
+            <h2>Génération de grille + sélection</h2>
+            <p>
+                Au chargement, génère <strong>20 cases</strong> dans la grille. Chaque case contient un nombre aléatoire entre 1 et 50.<br>
+                Au clic sur une case, elle devient orange (classe <code>selectionnee</code>).<br>
+                En bas, affiche la <strong>somme des cases sélectionnées</strong>.
+            </p>
+            <div class="zone-travail">
+                <div id="grille-cases">
+                    <!-- 20 cases générées au chargement -->
+                </div>
+                <div id="info-grille">Sélectionnées : 0 case(s) | Total : 0</div>
+            </div>
+            <div class="hint">
+                💡 Génère les cases dans le <code>$(document).ready()</code> avec une boucle <code>for</code> et <code>.append()</code><br>
+                💡 Au clic, utilise <code>$(this).toggleClass("selectionnee")</code> pour ajouter/enlever la classe<br>
+                💡 Pour recalculer le total, parcours les <code>$(".case.selectionnee")</code> avec <code>.each()</code><br>
+                💡 <code>$(".case.selectionnee").length</code> donne le nombre de cases sélectionnées.
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // ========================================
+        // TON CODE ICI ! Complète chaque exercice
+        // ========================================
+
+        $(document).ready(function() {
+
+            // EXERCICE 1 : Génération dynamique
+            // TODO: Génère 5 animaux aléatoires avec un âge aléatoire entre 1 et 15
+            var animaux = ["Chat", "Chien", "Lapin", "Perroquet", "Tortue", "Hamster"];
+            for (let i = 0 ; i<5 ; i++){
+                let animal = animaux[Math.floor(Math.random() * animaux.length)]
+
+                let age = Math.floor( Math.random()*15+ 1 )
+
+
+                $("#liste-animaux").append("<div>" + animal +" " + age + "ans</div>")
+                $("#liste-animaux").show()
+            }
+
+
+            // EXERCICE 2 : .each()
+            // TODO: Au clic sur #btn-calculer, additionne toutes les valeurs des .carte avec .each()
+            // TODO: Au clic sur #btn-melanger, mets des valeurs aléatoires (1-30) dans chaque .carte avec .each()
+            $("#btn-calculer").click(function(){
+                let total = 0 
+                $(".carte").each(function(){
+                    let numero = parseInt($(this).text())
+                    total += numero
+                })
+
+                $("#score-total").text("total = " + total)
+            })
+
+            $("#btn-melanger").click(function(){
+                $(".carte").each(function(){
+                    $(this).text(Math.floor( Math.random()*30+ 1 ))
+                })
+            })
+
+
+            // EXERCICE 3 : keyup + disabled
+            // TODO: Surveille le champ #champ-message à chaque frappe
+            // - Met à jour #compteur-lettres avec le nombre de caractères
+            // - Active/désactive #btn-envoyer selon si >= 5 caractères
+            // - Affiche le contenu du champ dans #apercu (avec .show() si non vide)
+            // TODO: Au clic sur #btn-envoyer, affiche un message de confirmation dans #resultat-envoi
+            $("#champ-message").on("keyup", function(){
+                let mot = $("#champ-message").val()
+                let nbr_lettres = mot.length
+                if (nbr_lettres > 4){
+                    $("#btn-envoyer").prop("disabled",false)
+                } else {
+                    $("#btn-envoyer").prop("disabled",true)
+                }
+                // #compteur-lettres
+                $("#compteur-lettres").text(nbr_lettres + " caractère(s)")
+                $("#resultat-envoi").text(mot)
+                $("#resultat-envoi").show()
+
+            })
+
+
+            // EXERCICE 4 : fadeIn / fadeOut
+            // TODO: #btn-succes → fadeIn #msg-succes et fadeOut #msg-erreur
+            // TODO: #btn-erreur → fadeIn #msg-erreur et fadeOut #msg-succes
+            $("#btn-succes").click(function(){
+                $("#msg-erreur").fadeOut(100)
+                $("#msg-succes").fadeIn(500)
+            })
+            $("#btn-erreur").click(function(){
+                $("#msg-succes").fadeOut(100)
+                $("#msg-erreur").fadeIn(500)
+            })
+
+
+            // EXERCICE 5 : .animate()
+            // TODO: Gère les 3 boutons de la jauge avec .animate({ width: ... }, 400)
+            let valeurBarre = 0;
+            $("#btn-plus25").click(function(){
+                valeurBarre += 25
+                if(valeurBarre > 100){
+                    valeurBarre = 100
+                }
+                $("#barre").animate({ width: valeurBarre + "%" }, 400)
+            })
+            $("#btn-moins25").click(function(){
+                valeurBarre -= 25
+                if(valeurBarre < 0 ){
+                    valeurBarre = 0
+                }
+                $("#barre").animate({ width: valeurBarre + "%" }, 400)
+            })
+            $("#btn-reset-barre").click(function(){
+                valeurBarre = 0
+                $("#barre").animate({ width: valeurBarre + "%" }, 400)
+            })
+            
+            
+
+
+
+            // EXERCICE 6 : Grille + sélection + recalcul
+            // TODO: Génère 20 cases avec des valeurs aléatoires entre 1 et 50
+            // TODO: Au clic sur une case, toggle la classe "selectionnee" et recalcule le total
+            
+
+            for (let i = 0; i < 20; i++){
+                let valeur = Math.floor( Math.random()*50 )+ 1
+                $("#grille-cases").append("<div class='case'>"+valeur+"</div>")
+            }
+            let total = 0 
+            let nbr_case = 0
+            $(".case").click(function(){
+                
+                let selection = $(this).hasClass("selectionnee")
+                $(this).toggleClass("selectionnee")
+                console.log(selection)
+                if(!selection){
+                    total += parseInt($(this).text())
+                    nbr_case += 1
+                } else {
+                    total -= parseInt($(this).text())
+                    nbr_case -= 1
+                }
+                console.log(total)
+                console.log(nbr_case)
+
+                $("#info-grille").text("Sélectionnées : "+ nbr_case +" case(s) | Total : "+ total)
+            })
+            
+
+
+        });
+    </script>
+</body>
+</html>

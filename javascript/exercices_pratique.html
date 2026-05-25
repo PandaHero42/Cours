@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices JS/jQuery - Pratique</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .exercise {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .exercise h2 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .exercise p {
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .zone-travail {
+            background: #f8f9fa;
+            border: 2px dashed #667eea;
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 80px;
+            margin-bottom: 15px;
+        }
+        
+        input[type="text"], input[type="number"] {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            width: 200px;
+            margin-right: 10px;
+        }
+        
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #5568d3;
+        }
+        
+        .resultat {
+            margin-top: 15px;
+            padding: 10px;
+            background: #e8f4f8;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .hint {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Exercices JS/jQuery - Session d'entraînement</h1>
+        
+        <!-- Exercice 1 -->
+        <div class="exercise">
+            <h2>Exercice 1 : Compteur Simple</h2>
+            <p>Crée un compteur avec trois boutons : +1, -1, et Reset</p>
+            <div class="zone-travail" id="ex1">
+                <div style="text-align: center;">
+                    <h3 id="compteur">0</h3>
+                    <button id="plus">+1</button>
+                    <button id="moins">-1</button>
+                    <button id="reset">Reset</button>
+                </div>
+            </div>
+            <div class="hint">
+                💡 Utilise <code>$("#compteur").text()</code> pour lire et modifier le texte
+            </div>
+        </div>
+        
+        <!-- Exercice 2 -->
+        <div class="exercise">
+            <h2>Exercice 2 : Changement de couleur</h2>
+            <p>Clique sur la boîte pour changer sa couleur aléatoirement</p>
+            <div class="zone-travail" id="ex2">
+                <div id="boite" style="width: 150px; height: 150px; background: #667eea; margin: 0 auto; cursor: pointer; border-radius: 10px;"></div>
+            </div>
+            <div class="hint">
+                💡 Génère une couleur aléatoire avec <code>#</code> + 6 caractères hexadécimaux
+            </div>
+        </div>
+        
+        <!-- Exercice 3 -->
+        <div class="exercise">
+            <h2>Exercice 3 : Liste de tâches</h2>
+            <p>Ajoute des tâches à la liste. Clique sur une tâche pour la supprimer.</p>
+            <div class="zone-travail" id="ex3">
+                <input type="text" id="nouvelleTache" placeholder="Nouvelle tâche...">
+                <button id="ajouterTache">Ajouter</button>
+                <ul id="listeTaches" style="margin-top: 15px;"></ul>
+            </div>
+            <div class="hint">
+                💡 Utilise <code>.append()</code> pour ajouter et <code>.remove()</code> pour supprimer
+            </div>
+        </div>
+        
+        <!-- Exercice 4 -->
+        <div class="exercise">
+            <h2>Exercice 4 : Calculatrice basique</h2>
+            <p>Crée une calculatrice simple (addition et multiplication)</p>
+            <div class="zone-travail" id="ex4">
+                <input type="number" id="nombre1" placeholder="Nombre 1">
+                <input type="number" id="nombre2" placeholder="Nombre 2">
+                <br><br>
+                <button id="additionner">Addition</button>
+                <button id="multiplier">Multiplication</button>
+                <div class="resultat" id="resultatCalc"></div>
+            </div>
+            <div class="hint">
+                💡 N'oublie pas de convertir en nombre avec <code>parseFloat()</code>
+            </div>
+        </div>
+        
+        <!-- Exercice 5 -->
+        <div class="exercise">
+            <h2>Exercice 5 : Show/Hide Toggle</h2>
+            <p>Cache et montre le texte avec un bouton toggle</p>
+            <div class="zone-travail" id="ex5">
+                <button id="toggleTexte">Afficher/Cacher</button>
+                <p id="texteSecret" style="margin-top: 15px; display: none;">
+                    🎉 Bravo ! Tu maîtrises le toggle !
+                </p>
+            </div>
+            <div class="hint">
+                💡 Utilise <code>.toggle()</code> ou <code>.slideToggle()</code> pour l'effet
+            </div>
+        </div>
+        
+        <!-- Exercice 6 -->
+        <div class="exercise">
+            <h2>Exercice 6 : Validation de formulaire</h2>
+            <p>Vérifie que le nom contient au moins 3 caractères et l'email contient un @</p>
+            <div class="zone-travail" id="ex6">
+                <input type="text" id="nom" placeholder="Nom (min 3 caractères)"><br><br>
+                <input type="text" id="email" placeholder="Email"><br><br>
+                <button id="valider">Valider</button>
+                <div class="resultat" id="resultatValidation"></div>
+            </div>
+            <div class="hint">
+                💡 Utilise <code>.length</code> et <code>.includes("@")</code>
+            </div>
+        </div>
+        
+        <!-- Exercice 7 -->
+        <div class="exercise">
+            <h2>Exercice 7 : Hover Effect</h2>
+            <p>Change la couleur des carrés au survol (mouseenter/mouseleave)</p>
+            <div class="zone-travail" id="ex7">
+                <div style="display: flex; gap: 10px; justify-content: center;">
+                    <div class="carre" style="width: 80px; height: 80px; background: #ddd; border-radius: 5px;"></div>
+                    <div class="carre" style="width: 80px; height: 80px; background: #ddd; border-radius: 5px;"></div>
+                    <div class="carre" style="width: 80px; height: 80px; background: #ddd; border-radius: 5px;"></div>
+                </div>
+            </div>
+            <div class="hint">
+                💡 Utilise <code>.mouseenter()</code> et <code>.mouseleave()</code>
+            </div>
+        </div>
+        
+        <!-- Exercice BONUS -->
+        <div class="exercise">
+            <h2>🏆 Exercice BONUS : Mini-jeu "Devinez le nombre"</h2>
+            <p>L'ordinateur choisit un nombre entre 1 et 10. Essaye de le deviner !</p>
+            <div class="zone-travail" id="ex8">
+                <input type="number" id="tentative" placeholder="Ton nombre (1-10)" min="1" max="10">
+                <button id="deviner">Deviner</button>
+                <button id="nouveau">Nouveau jeu</button>
+                <div class="resultat" id="resultatJeu"></div>
+            </div>
+            <div class="hint">
+                💡 Génère un nombre aléatoire avec <code>Math.floor(Math.random() * 10) + 1</code>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        // ========================================
+        // TON CODE ICI ! Complète chaque exercice
+        // ========================================
+        
+        $(document).ready(function() {
+            
+            // EXERCICE 1 : Compteur
+            // TODO: Implémente les boutons +1, -1, et Reset
+            $("#plus").click(function(){
+                let valeur = $("#compteur").text()
+                let nouveau = parseInt(valeur) + 1 
+                $("#compteur").text(nouveau)
+            })
+
+            $("#moins").click(function(){
+                let valeur = $("#compteur").text()
+                let nouveau = parseInt(valeur) - 1 
+                $("#compteur").text(nouveau)
+            })
+
+            $("#reset").click(function(){
+                $("#compteur").text(0)
+            })
+            
+            
+            
+            // EXERCICE 2 : Changement de couleur
+            // TODO: Change la couleur de #boite au clic
+            $("#boite").click(function(){
+                let nbr = Math.random()
+                console.log(nbr)
+                let aleatoire = parseInt(nbr * 100000)
+                console.log(aleatoire)
+                let hex = aleatoire.toString(16)
+                console.log(hex)
+                let couleur = "#" + hex
+                console.log(couleur)
+                
+
+                $("#boite").css("background",couleur)
+            })
+            
+            
+            // EXERCICE 3 : Liste de tâches
+            // TODO: Ajoute des tâches et supprime-les au clic
+            $("#ajouterTache").click(function(){
+                let input = $("#nouvelleTache").val()
+
+                $("#listeTaches").append("<li>"+ input + "</li>")
+                $("#nouvelleTache").val("")
+            })
+
+            $("#listeTaches").on("click","li", function(){
+                $(this).remove()
+            })
+             
+            
+            // EXERCICE 4 : Calculatrice
+            // TODO: Fais l'addition et la multiplication
+            $("#additionner").click(function(){
+                let reponse1 = $("#nombre1").val()
+                let reponse2 = $("#nombre2").val()
+
+                let reponse = parseFloat(reponse1) + parseFloat(reponse2)
+
+                $("#resultatCalc").text(reponse)
+                $("#resultatCalc").show()
+
+            })
+
+            $("#multiplier").click(function(){
+                let reponse1 = $("#nombre1").val()
+                let reponse2 = $("#nombre2").val()
+
+                let reponse = parseFloat(reponse1) * parseFloat(reponse2)
+
+                $("#resultatCalc").text(reponse)
+                $("#resultatCalc").show()
+
+            })
+            
+            
+            // EXERCICE 5 : Show/Hide Toggle
+            // TODO: Toggle le texte secret
+            $("#toggleTexte").click(function(){
+                $("#texteSecret").slideToggle()
+            })
+            
+            
+            // EXERCICE 6 : Validation
+            // TODO: Valide le nom (min 3 car) et l'email (contient @)
+            $("#valider").click(function(){
+                let nom = $("#nom").val()
+                let email = $("#email").val()
+
+                if (nom.length > 3 && email.includes("@")){
+                    $("#resultatValidation").text("Validation validé")
+                    $("#resultatValidation").show()
+                } else {
+                    let erreurs = []
+                    if (nom.length < 3) {
+                        erreurs.push("Le nom doit contenir au moins 3 caractères")
+                    }
+                    if (!email.includes("@")) {
+                        erreurs.push("L'email doit contenir un @")
+                    }
+                    
+                    $("#resultatValidation").text("❌ " + erreurs.join(" - "))
+                    $("#resultatValidation").css("background", "#f8d7da")  // Rouge
+                    $("#resultatValidation").show()
+                }
+
+            })
+            
+            
+            // EXERCICE 7 : Hover Effect
+            // TODO: Change la couleur au survol
+            $(".carre").mouseenter(function(){
+                let nbr = Math.random()
+                console.log(nbr)
+                let aleatoire = parseInt(nbr * 100000)
+                console.log(aleatoire)
+                let hex = aleatoire.toString(16)
+                console.log(hex)
+                let couleur = "#" + hex
+                console.log(couleur)
+                
+
+                $(this).css("background",couleur)
+            })
+
+            $(".carre").mouseleave(function(){
+                let nbr = Math.random()
+                let aleatoire = parseInt(nbr * 100000) 
+                let hex = aleatoire.toString(16)
+                let couleur = "#" + hex
+                
+                
+
+                $(this).css("background",couleur)
+            })
+            
+            
+            // EXERCICE BONUS : Jeu de devinette
+            // TODO: Devine le nombre entre 1 et 10
+            let deviner = Math.floor( Math.random()*11 + 1 ) ;
+            console.log(deviner)            
+            
+            $("#nouveau").click(function(){
+                deviner = Math.floor( Math.random()*11 + 1 ) ;
+                console.log(deviner)
+            })
+
+
+            $("#deviner").click(function(){
+                let value = $("#tentative").val()
+                if (value == deviner){
+                    $("#resultatJeu").text("GAGNEEE PD ")
+                    $("#resultatJeu").show()
+                } else {
+                    $("#resultatJeu").text("PERDUUU PD ")
+                    $("#resultatJeu").show()
+                }
+            })
+        });
+    </script>
+</body>
+</html>
